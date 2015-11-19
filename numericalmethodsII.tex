@@ -1320,9 +1320,18 @@ If energy is almost conserved, we can say that this quantity is close to one and
 If we want to conserve energy, we can perform one step of Velocity Verlet, then change $v$ in order to have energy equal to the previous one: we have constant energy by construction. Nobody uses this: it's not more accurate, constant energy doesn't mean I'm sampling micro-canonical ensemble.\newline
 An inconsistency arises: we have gone from sampling a canonical ensemble, to sampling a micro-canonical one.
 
-%immagini sampling micro and canonical
+\begin{figure}[H]
+\centering
+\includegraphics[width=100mm]{img/pic19.jpg}
+\end{figure}
 
 The problem is this algorithm is \textbf{not ergodic} in the canonical ensemble. We said that if a system is not ergodic there is a conserved quantity, in this case is evident that's the energy.\newline
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=100mm]{img/pic20.jpg}
+\end{figure}
+
 We can tackle this problem by using a larger $\Delta t$, energy won't be exactly conserved. There is another problem: internal point are accepted, if a move is rejected, the system get stuck in a point. Given $p,q$, the computation of H gives always the same result, so the algorithm will propose always the same move, that's already been rejected. To solve this problem, $p$ are randomized at the beginning of each step.
 
 \paragraph{Pseudocode}
@@ -1335,7 +1344,7 @@ for (int istep = 0; istep < nsteps; istep++)	{
 	randomize p //to not get stuck in a point. Canonical distribution is left stationary by this step
 	(q', p') = velocity_verlet(q, p, deltat, natoms)
 	/*this deltat is typically higher than one used in traditional Monte Carlo
-	n is usually 10-2*/
+	n is usually 10-20*/
 	alpha = min\{1 e^(-beta[H(q', p') - H(q, p)])\}
 	
 	if (alpha < rand())	(q, p) = (q', p') //if you forget this and timestep too large, simulation explodes
@@ -1343,6 +1352,7 @@ for (int istep = 0; istep < nsteps; istep++)	{
 \end{lstlisting}
 
 However there's a big gain when we can exploit trick to compute energy on all the particles in a simple way. Otherwise the gain is reduced by the fact that recomputing energy for moves of fewer particles is much less expensive.\newline
-Another issue is how much energy should vary: it should vary of fraction of $k_B T$, since if $\Delta E \sim 0.01 k_B \rightarrow \alpha \simeq 1$. Fluctuations depend on N, this is the main reaosn because hybrid monte Carlo is not very used: it doesn't scale with N. It's obvious: more atoms mean that a hit between two of them is more likely, so it's more likely the energy will vary a lot. Increasing N we have to use a shorter timestep.
+Another issue is how much energy should vary: it should vary of fraction of $k_B T$, since if $\Delta E \sim 0.01 k_B \rightarrow \alpha \simeq 1$. Fluctuations depend on N, this is the main reaosn because hybrid Monte Carlo is not very used: it doesn't scale with N. 
+It's obvious: more atoms mean that a hit between two of them is more likely, so it's more likely the energy will vary a lot. Increasing N we have to use a shorter timestep.
 
 \end{document}
