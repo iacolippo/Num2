@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.3.3)  18 NOV 2015 20:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.3.3)  19 NOV 2015 09:31
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -671,16 +671,16 @@ File: siunitx-abbreviations.cfg 2013/07/31 v2.5s siunitx: Abbreviated units
 
 \c__siunitx_mathsf_int=\count173
 \c__siunitx_mathtt_int=\count174
-<sissa.jpg, id=1, 501.875pt x 369.38pt>
-File: sissa.jpg Graphic file (type jpg)
- <use sissa.jpg>
-Package pdftex.def Info: sissa.jpg used on input line 46.
+<img/sissa.jpg, id=1, 501.875pt x 369.38pt>
+File: img/sissa.jpg Graphic file (type jpg)
+ <use img/sissa.jpg>
+Package pdftex.def Info: img/sissa.jpg used on input line 46.
 (pdftex.def)             Requested size: 376.42575pt x 277.06248pt.
  [1
 
 
-{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./sissa
-.jpg>]
+{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./img/s
+issa.jpg>]
 (./numericalmethodsII.toc)
 \tf@toc=\write3
 \openout3 = `numericalmethodsII.toc'.
@@ -689,14 +689,14 @@ Package pdftex.def Info: sissa.jpg used on input line 46.
 
 ]
 Capitolo 1.
-<figure1.jpg, id=18, 1638.12pt x 919.435pt>
-File: figure1.jpg Graphic file (type jpg)
- <use figure1.jpg>
-Package pdftex.def Info: figure1.jpg used on input line 92.
+<img/figure1.jpg, id=18, 1638.12pt x 919.435pt>
+File: img/figure1.jpg Graphic file (type jpg)
+ <use img/figure1.jpg>
+Package pdftex.def Info: img/figure1.jpg used on input line 92.
 (pdftex.def)             Requested size: 284.52756pt x 159.697pt.
  [3
 
- <./figure1.jpg>]
+ <./img/figure1.jpg>]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 97.
  (/usr/local/texlive/2014/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
@@ -704,39 +704,37 @@ File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 97.
 
-<figure2.jpg, id=25, 1638.12pt x 919.435pt>
-File: figure2.jpg Graphic file (type jpg)
- <use figure2.jpg>
-Package pdftex.def Info: figure2.jpg used on input line 104.
+<img/figure2.jpg, id=25, 1638.12pt x 919.435pt>
+File: img/figure2.jpg Graphic file (type jpg)
+ <use img/figure2.jpg>
+Package pdftex.def Info: img/figure2.jpg used on input line 104.
 (pdftex.def)             Requested size: 199.16928pt x 111.7865pt.
 
-<figure3.jpg, id=26, 1638.12pt x 919.435pt>
-File: figure3.jpg Graphic file (type jpg)
- <use figure3.jpg>
-Package pdftex.def Info: figure3.jpg used on input line 129.
+<img/figure3.jpg, id=26, 1638.12pt x 919.435pt>
+File: img/figure3.jpg Graphic file (type jpg)
+ <use img/figure3.jpg>
+Package pdftex.def Info: img/figure3.jpg used on input line 129.
 (pdftex.def)             Requested size: 199.16928pt x 111.7865pt.
- [4 <./figure2.jpg>] [5 <./figure3.jpg>] <figure4.jpg, id=38, 1219.55624pt x 88
-5.3075pt>
-File: figure4.jpg Graphic file (type jpg)
-
-<use figure4.jpg>
-Package pdftex.def Info: figure4.jpg used on input line 173.
+ [4 <./img/figure2.jpg>] [5 <./img/figure3.jpg>]
+<img/figure4.jpg, id=38, 1219.55624pt x 885.3075pt>
+File: img/figure4.jpg Graphic file (type jpg)
+ <use img/figure4.jpg>
+Package pdftex.def Info: img/figure4.jpg used on input line 173.
 (pdftex.def)             Requested size: 284.52756pt x 206.54782pt.
- <figure5.jpg, id=39, 1638.12pt x 919.435pt>
-File: figure5.jpg Graphic file (type jpg)
 
-<use figure5.jpg>
-Package pdftex.def Info: figure5.jpg used on input line 189.
+<img/figure5.jpg, id=39, 1638.12pt x 919.435pt>
+File: img/figure5.jpg Graphic file (type jpg)
+ <use img/figure5.jpg>
+Package pdftex.def Info: img/figure5.jpg used on input line 189.
 (pdftex.def)             Requested size: 284.52756pt x 159.697pt.
 
 Underfull \vbox (badness 4859) has occurred while \output is active []
 
- [6 <./figure4.jpg>] [7 <./figure5.jpg>] <figure6.jpg, id=47, 1638.12pt x 919.4
-35pt>
-File: figure6.jpg Graphic file (type jpg)
-
-<use figure6.jpg>
-Package pdftex.def Info: figure6.jpg used on input line 238.
+ [6 <./img/figure4.jpg>] [7 <./img/figure5.jpg>]
+<img/figure6.jpg, id=47, 1638.12pt x 919.435pt>
+File: img/figure6.jpg Graphic file (type jpg)
+ <use img/figure6.jpg>
+Package pdftex.def Info: img/figure6.jpg used on input line 238.
 (pdftex.def)             Requested size: 284.52756pt x 159.697pt.
 
 Overfull \hbox (15.25285pt too wide) detected at line 255
@@ -745,30 +743,31 @@ mm/m/it/10 k[]ln\OT1/cmr/m/n/10 ([][] \OML/cmm/m/it/10 d[]\OT1/cmr/m/n/10 ^^@)
 = \OML/cmm/m/it/10 k[]ln [] \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 k[]ln []
  []
 
-[8 <./figure6.jpg>] <figure7.jpg, id=51, 1638.12pt x 919.435pt>
-File: figure7.jpg Graphic file (type jpg)
+[8 <./img/figure6.jpg>] <img/figure7.jpg, id=51, 1638.12pt x 919.435pt>
+File: img/figure7.jpg Graphic file (type jpg)
 
-<use figure7.jpg>
-Package pdftex.def Info: figure7.jpg used on input line 277.
+<use img/figure7.jpg>
+Package pdftex.def Info: img/figure7.jpg used on input line 277.
 (pdftex.def)             Requested size: 398.33858pt x 223.573pt.
- <figure8.jpg, id=52, 1638.12pt x 919.435pt>
-File: figure8.jpg Graphic file (type jpg)
+ <img/figure8.jpg, id=52, 1638.12pt x 919.435pt>
+File: img/figure8.jpg Graphic file (type jpg)
 
-<use figure8.jpg>
-Package pdftex.def Info: figure8.jpg used on input line 288.
+<use img/figure8.jpg>
+Package pdftex.def Info: img/figure8.jpg used on input line 288.
 (pdftex.def)             Requested size: 284.52756pt x 159.697pt.
- [9 <./figure7.jpg>] [10 <./figure8.jpg>] [11]
+ [9 <./img/figure7.jpg>] [10 <./img/figure8.jpg>] [11]
 Overfull \hbox (9.16324pt too wide) detected at line 400
 []\OML/cmm/m/it/10 ln\OMS/cmsy/m/n/10 Z \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 ^^@[
 ] [] \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 ^^@[][] \OT1/cmr/m/n/10 = [] =
  []
 
-[12] <figure9.jpg, id=67, 1638.12pt x 919.435pt>
-File: figure9.jpg Graphic file (type jpg)
- <use figure9.jpg>
-Package pdftex.def Info: figure9.jpg used on input line 427.
+[12] <img/figure9.jpg, id=67, 1638.12pt x 919.435pt>
+File: img/figure9.jpg Graphic file (type jpg)
+ <use img/figure9.jpg>
+Package pdftex.def Info: img/figure9.jpg used on input line 427.
 (pdftex.def)             Requested size: 284.52756pt x 159.697pt.
- [13 <./figure9.jpg>] [14]
+
+[13 <./img/figure9.jpg>] [14]
 Overfull \hbox (4.20596pt too wide) detected at line 519
 \OML/cmm/m/it/10 S \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 ^^@\OML/cmm/m/it/10 k[] [
 ] [] d\OT1/cmr/m/n/10 ^^@\OML/cmm/m/it/10 ^^Zln\OT1/cmr/m/n/10 (\OML/cmm/m/it/1
@@ -778,25 +777,27 @@ m/m/it/10 ^^Z [] \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 k[] []
 
 [15] [16] [17]
 Capitolo 2.
-<pic1.jpg, id=84, 1638.12pt x 919.435pt>
-File: pic1.jpg Graphic file (type jpg)
- <use pic1.jpg>
-Package pdftex.def Info: pic1.jpg used on input line 656.
+<img/pic1.jpg, id=84, 1638.12pt x 919.435pt>
+File: img/pic1.jpg Graphic file (type jpg)
+ <use img/pic1.jpg>
+Package pdftex.def Info: img/pic1.jpg used on input line 656.
 (pdftex.def)             Requested size: 284.52756pt x 159.697pt.
  [18
 
 ]
-<pic2.jpg, id=88, 1638.12pt x 919.435pt>
-File: pic2.jpg Graphic file (type jpg)
- <use pic2.jpg>
-Package pdftex.def Info: pic2.jpg used on input line 670.
+<img/pic2.jpg, id=88, 1638.12pt x 919.435pt>
+File: img/pic2.jpg Graphic file (type jpg)
+ <use img/pic2.jpg>
+Package pdftex.def Info: img/pic2.jpg used on input line 670.
 (pdftex.def)             Requested size: 284.52756pt x 159.697pt.
- [19 <./pic1.jpg> <./pic2.jpg>] <pic3.jpg, id=93, 1638.12pt x 919.435pt>
-File: pic3.jpg Graphic file (type jpg)
- <use pic3.jpg>
-Package pdftex.def Info: pic3.jpg used on input line 711.
+ [19 <./img/pic1.jpg> <./img/pic2.jpg>] <img/pic3.jpg, id=93, 1638.12pt x 919.4
+35pt>
+File: img/pic3.jpg Graphic file (type jpg)
+
+<use img/pic3.jpg>
+Package pdftex.def Info: img/pic3.jpg used on input line 711.
 (pdftex.def)             Requested size: 284.52756pt x 159.697pt.
- [20 <./pic3.jpg>]
+ [20 <./img/pic3.jpg>]
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <8> not available
 (Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 763.
  [21]
@@ -811,149 +812,154 @@ T1/cmr/m/n/10 ) + \OML/cmm/m/it/10 ^^U[]\OT1/cmr/m/n/10 ([][] + \OML/cmm/m/it/1
 []\OT1/cmr/m/n/10 )
  []
 
-[22] [23] [24] <pic4.jpg, id=112, 1638.12pt x 919.435pt>
-File: pic4.jpg Graphic file (type jpg)
- <use pic4.jpg>
-Package pdftex.def Info: pic4.jpg used on input line 920.
-(pdftex.def)             Requested size: 284.52756pt x 159.697pt.
+[22] [23] [24] <img/pic4.jpg, id=112, 1638.12pt x 919.435pt>
+File: img/pic4.jpg Graphic file (type jpg)
 
-<pic5.jpg, id=113, 1638.12pt x 919.435pt>
-File: pic5.jpg Graphic file (type jpg)
- <use pic5.jpg>
-Package pdftex.def Info: pic5.jpg used on input line 927.
+<use img/pic4.jpg>
+Package pdftex.def Info: img/pic4.jpg used on input line 920.
 (pdftex.def)             Requested size: 284.52756pt x 159.697pt.
+ <img/pic5.jpg, id=113, 1638.12pt x 919.435pt>
+File: img/pic5.jpg Graphic file (type jpg)
 
-<pic6.jpg, id=114, 1638.12pt x 919.435pt>
-File: pic6.jpg Graphic file (type jpg)
- <use pic6.jpg>
-Package pdftex.def Info: pic6.jpg used on input line 938.
+<use img/pic5.jpg>
+Package pdftex.def Info: img/pic5.jpg used on input line 927.
+(pdftex.def)             Requested size: 284.52756pt x 159.697pt.
+ <img/pic6.jpg, id=114, 1638.12pt x 919.435pt>
+File: img/pic6.jpg Graphic file (type jpg)
+
+<use img/pic6.jpg>
+Package pdftex.def Info: img/pic6.jpg used on input line 938.
 (pdftex.def)             Requested size: 284.52756pt x 159.697pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [25 <./pic4.jpg> <./pic5.jpg>] <pic7.jpg, id=119, 1638.12pt x 919.435pt>
-File: pic7.jpg Graphic file (type jpg)
- <use pic7.jpg>
-Package pdftex.def Info: pic7.jpg used on input line 945.
+ [25 <./img/pic4.jpg> <./img/pic5.jpg>] <img/pic7.jpg, id=119, 1638.12pt x 919.
+435pt>
+File: img/pic7.jpg Graphic file (type jpg)
+
+<use img/pic7.jpg>
+Package pdftex.def Info: img/pic7.jpg used on input line 945.
 (pdftex.def)             Requested size: 284.52756pt x 159.697pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 948--951
 
  []
 
-<pic8.jpg, id=120, 1638.12pt x 919.435pt>
-File: pic8.jpg Graphic file (type jpg)
- <use pic8.jpg>
-Package pdftex.def Info: pic8.jpg used on input line 956.
+<img/pic8.jpg, id=120, 1638.12pt x 919.435pt>
+File: img/pic8.jpg Graphic file (type jpg)
+ <use img/pic8.jpg>
+Package pdftex.def Info: img/pic8.jpg used on input line 956.
 (pdftex.def)             Requested size: 284.52756pt x 159.697pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [26 <./pic6.jpg> <./pic7.jpg>] <pic9.jpg, id=124, 1638.12pt x 919.435pt>
-File: pic9.jpg Graphic file (type jpg)
- <use pic9.jpg>
-Package pdftex.def Info: pic9.jpg used on input line 965.
-(pdftex.def)             Requested size: 284.52756pt x 159.697pt.
+ [26 <./img/pic6.jpg> <./img/pic7.jpg>] <img/pic9.jpg, id=124, 1638.12pt x 919.
+435pt>
+File: img/pic9.jpg Graphic file (type jpg)
 
-[27 <./pic8.jpg> <./pic9.jpg>] [28]
+<use img/pic9.jpg>
+Package pdftex.def Info: img/pic9.jpg used on input line 965.
+(pdftex.def)             Requested size: 284.52756pt x 159.697pt.
+ [27 <./img/pic8.jpg> <./img/pic9.jpg>] [28]
 Overfull \hbox (43.71039pt too wide) detected at line 1018
 [] \OT1/cmr/m/n/10 = [](\OML/cmm/m/it/10 < HU > \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m
 /it/10 < H >< U >\OT1/cmr/m/n/10 ) = [](\OML/cmm/m/it/10 < U[] > \OMS/cmsy/m/n/
 10 ^^@ \OML/cmm/m/it/10 < U >[]\OT1/cmr/m/n/10 )[]
  []
 
-<pic10.jpg, id=131, 1638.12pt x 919.435pt>
-File: pic10.jpg Graphic file (type jpg)
- <use pic10.jpg>
-Package pdftex.def Info: pic10.jpg used on input line 1027.
+<img/pic10.jpg, id=131, 1638.12pt x 919.435pt>
+File: img/pic10.jpg Graphic file (type jpg)
+ <use img/pic10.jpg>
+Package pdftex.def Info: img/pic10.jpg used on input line 1027.
 (pdftex.def)             Requested size: 284.52756pt x 159.697pt.
 
-<pic11.jpg, id=132, 1638.12pt x 919.435pt>
-File: pic11.jpg Graphic file (type jpg)
- <use pic11.jpg>
-Package pdftex.def Info: pic11.jpg used on input line 1042.
+<img/pic11.jpg, id=132, 1638.12pt x 919.435pt>
+File: img/pic11.jpg Graphic file (type jpg)
+ <use img/pic11.jpg>
+Package pdftex.def Info: img/pic11.jpg used on input line 1042.
 (pdftex.def)             Requested size: 284.52756pt x 159.697pt.
- [29 <./pic10.jpg>]
-<pic12.jpg, id=136, 1638.12pt x 919.435pt>
-File: pic12.jpg Graphic file (type jpg)
- <use pic12.jpg>
-Package pdftex.def Info: pic12.jpg used on input line 1059.
-(pdftex.def)             Requested size: 284.52756pt x 159.697pt.
- [30 <./pic11.jpg> <./pic12.jpg>] [31] <pic13.jpg, id=144, 1638.12pt x 919.435p
-t>
-File: pic13.jpg Graphic file (type jpg)
- <use pic13.jpg>
-Package pdftex.def Info: pic13.jpg used on input line 1143.
+ [29 <./img/pic10.jpg>] <img/pic12.jpg, id=136, 1638.12pt x 919.435pt>
+File: img/pic12.jpg Graphic file (type jpg)
+ <use img/pic12.jpg>
+Package pdftex.def Info: img/pic12.jpg used on input line 1059.
 (pdftex.def)             Requested size: 284.52756pt x 159.697pt.
 
-[32] <pic14.jpg, id=148, 1638.12pt x 919.435pt>
-File: pic14.jpg Graphic file (type jpg)
- <use pic14.jpg>
-Package pdftex.def Info: pic14.jpg used on input line 1152.
+[30 <./img/pic11.jpg> <./img/pic12.jpg>] [31]
+<img/pic13.jpg, id=144, 1638.12pt x 919.435pt>
+File: img/pic13.jpg Graphic file (type jpg)
+ <use img/pic13.jpg>
+Package pdftex.def Info: img/pic13.jpg used on input line 1143.
+(pdftex.def)             Requested size: 284.52756pt x 159.697pt.
+ [32]
+<img/pic14.jpg, id=148, 1638.12pt x 919.435pt>
+File: img/pic14.jpg Graphic file (type jpg)
+ <use img/pic14.jpg>
+Package pdftex.def Info: img/pic14.jpg used on input line 1152.
 (pdftex.def)             Requested size: 284.52756pt x 159.697pt.
 
-<pic15.jpg, id=149, 1638.12pt x 919.435pt>
-File: pic15.jpg Graphic file (type jpg)
- <use pic15.jpg>
-Package pdftex.def Info: pic15.jpg used on input line 1159.
+<img/pic15.jpg, id=149, 1638.12pt x 919.435pt>
+File: img/pic15.jpg Graphic file (type jpg)
+ <use img/pic15.jpg>
+Package pdftex.def Info: img/pic15.jpg used on input line 1159.
 (pdftex.def)             Requested size: 284.52756pt x 159.697pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [33 <./pic13.jpg> <./pic14.jpg>] <pic16.jpg, id=153, 1638.12pt x 919.435pt>
-File: pic16.jpg Graphic file (type jpg)
+ [33 <./img/pic13.jpg> <./img/pic14.jpg>] <img/pic16.jpg, id=153, 1638.12pt x 9
+19.435pt>
+File: img/pic16.jpg Graphic file (type jpg)
 
-<use pic16.jpg>
-Package pdftex.def Info: pic16.jpg used on input line 1168.
+<use img/pic16.jpg>
+Package pdftex.def Info: img/pic16.jpg used on input line 1168.
 (pdftex.def)             Requested size: 284.52756pt x 159.697pt.
- <pic17.jpg, id=154, 1638.12pt x 919.435pt>
-File: pic17.jpg Graphic file (type jpg)
- <use pic17.jpg>
-Package pdftex.def Info: pic17.jpg used on input line 1182.
-(pdftex.def)             Requested size: 284.52756pt x 159.697pt.
+ <img/pic17.jpg, id=154, 1638.12pt x 919.435pt>
+File: img/pic17.jpg Graphic file (type jpg)
 
-[34 <./pic15.jpg> <./pic16.jpg>] [35 <./pic17.jpg>]
-<pic18.jpg, id=161, 1638.12pt x 919.435pt>
-File: pic18.jpg Graphic file (type jpg)
- <use pic18.jpg>
-Package pdftex.def Info: pic18.jpg used on input line 1259.
+<use img/pic17.jpg>
+Package pdftex.def Info: img/pic17.jpg used on input line 1182.
+(pdftex.def)             Requested size: 284.52756pt x 159.697pt.
+ [34 <./img/pic15.jpg> <./img/pic16.jpg>] [35 <./img/pic17.jpg>] <img/pic18.jpg
+, id=161, 1638.12pt x 919.435pt>
+File: img/pic18.jpg Graphic file (type jpg)
+ <use img/pic18.jpg>
+Package pdftex.def Info: img/pic18.jpg used on input line 1259.
 (pdftex.def)             Requested size: 284.52756pt x 159.697pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [36]
-[37 <./pic18.jpg>] (./numericalmethodsII.aux) ) 
+[37 <./img/pic18.jpg>] (./numericalmethodsII.aux) ) 
 Here is how much of TeX's memory you used:
- 13393 strings out of 493117
- 260441 string characters out of 6135434
+ 13394 strings out of 493117
+ 260893 string characters out of 6135434
  378403 words of memory out of 5000000
  16699 multiletter control sequences out of 15000+600000
  14218 words of font info for 53 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,19n,56p,10407b,1675s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2014/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2014/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2014/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2014/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2014/texmf-dist
-/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/local/texlive/2014/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></usr/local/texlive/2014/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2014/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2014/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2014/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2014/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2014/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2014/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2014/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmti10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmti12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmtt8.pfb>
-Output written on numericalmethodsII.pdf (37 pages, 10365447 bytes).
+</usr/local/texlive/2014/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2014/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2014/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2014/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2014/texmf-
+dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/local/texlive/2014/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></usr/local/texlive/2014/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2014/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2014/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2014/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2014/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2014/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2014/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2014/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2014/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmti10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmti12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmtt8.pfb>
+Output written on numericalmethodsII.pdf (37 pages, 10365470 bytes).
 PDF statistics:
  238 PDF objects out of 1000 (max. 8388607)
  148 compressed objects within 2 object streams

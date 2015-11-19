@@ -43,7 +43,7 @@
 \begin{titlepage}
 \begin{center}
 
-\includegraphics[width=0.9\textwidth]{sissa.jpg}~\\[1cm]
+\includegraphics[width=0.9\textwidth]{img/sissa.jpg}~\\[1cm]
 
 \HRule \\[0.4cm]
 { \large \bfseries Numerical Methods II - Statistical Mechanics and Molecular Dynamics \\[0.4cm] }
@@ -89,7 +89,7 @@ $$\dot{p_i} = - \frac{\partial H}{\partial q_i}$$
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=100mm]{figure1.jpg}
+\includegraphics[width=100mm]{img/figure1.jpg}
 \end{figure}
 
 In the phase space, trajectories that intersect themselves are not allowed, since at the intersection I wouldn't know where to proceed and this would imply a non-deterministic behavior. Given this rule, I can have two kinds of trajectories:
@@ -101,7 +101,7 @@ In the phase space, trajectories that intersect themselves are not allowed, sinc
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=70mm]{figure2.jpg}
+\includegraphics[width=70mm]{img/figure2.jpg}
 \end{figure}
 
 If we divide the phase space in small volumes $\Delta \Gamma$, we can build an histogram adding +1 every time the system visits a particular spot of the grid. At the end we will have an histogram of how many times that state has been visited by the system. The dimension of the volume gives the precision of momenta and coordinates: it is the level of fine graining.\newline
@@ -126,7 +126,7 @@ The expected value of an observable can be computed as time average of a very lo
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=70mm]{figure3.jpg}
+\includegraphics[width=70mm]{img/figure3.jpg}
 \end{figure}
 
 Let's choose a convex region $\Gamma_0$ of the phase space, whose boundary is $\partial \Gamma_0$. We can write:
@@ -170,7 +170,7 @@ Since entropy is an extensive property,  $S_{1+2} = S_1 + S_2$ must hold.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=100mm]{figure4.jpg}
+\includegraphics[width=100mm]{img/figure4.jpg}
 \end{figure}
 
 if I know $E_1$, then $E_2 = E- E_1$. Then:
@@ -186,7 +186,7 @@ $$\Gamma_1(\bar{E_1})\cdot \Gamma_2(E- \bar{E_1}) \le \Gamma_{1+2} \le \Gamma_1(
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=100mm]{figure5.jpg}
+\includegraphics[width=100mm]{img/figure5.jpg}
 \end{figure}
 
 Since logarithm is a monotonically increasing function, I can apply it:
@@ -235,7 +235,7 @@ $$\Gamma_{\Delta}(\bar{E}) \le \sum_{i=0}^{E/\Delta} \Gamma_{\Delta}(E_i) \le \G
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=100mm]{figure6.jpg}
+\includegraphics[width=100mm]{img/figure6.jpg}
 \end{figure}
 
 taking the logarithm of each member and multiplying by $k_B$ (monotonically increasing function and positive number, so we are allowed):
@@ -274,7 +274,7 @@ Its partial derivative in E will be positive, so $T > 0$.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=140mm]{figure7.jpg}
+\includegraphics[width=140mm]{img/figure7.jpg}
 \end{figure}
 
 $\Gamma (E)$ is a non monotonic function of E. In this case, until $\tilde{E}$ is reached, T is rising, at $\tilde{E}$ $T \to \infty$, then $T<0$ (figure above).
@@ -285,7 +285,7 @@ In some situations if I plot E vs T, I get that one slope touches three points, 
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=100mm]{figure8.jpg}
+\includegraphics[width=100mm]{img/figure8.jpg}
 \end{figure}
 
 \paragraph{Computing observables}
@@ -424,7 +424,7 @@ so the absolute displacement increases, but the relative displacement tends to 0
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=100mm]{figure9.jpg}
+\includegraphics[width=100mm]{img/figure9.jpg}
 \end{figure}
 
 \subsection{Helmholtz Free Energy}
@@ -653,7 +653,7 @@ that is a single second order differential equation.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=100mm]{pic1.jpg}
+\includegraphics[width=100mm]{img/pic1.jpg}
 \end{figure}
 
 $$H = \frac{p^2}{2m} + \frac{1}{2} K q^2$$
@@ -667,7 +667,7 @@ $$\dot{q} = p$$
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=100mm]{pic2.jpg}
+\includegraphics[width=100mm]{img/pic2.jpg}
 \end{figure}
 
 We define points $x = (q, p)$ and we can define a velocity $\dot{x}$, that is not the physical velocity, but the velocity of points in phase space.
@@ -708,7 +708,7 @@ $$\begin{cases}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=100mm]{pic3.jpg}
+\includegraphics[width=100mm]{img/pic3.jpg}
 \end{figure}
 
 \item \textbf{Energy conservation}: we assume H depends on $t$ because of $p(t)$ and $q(t)$ and nothing else, then $\frac{\partial H}{\partial t} = 0$, so total derivative of H is:
@@ -917,14 +917,14 @@ Actually given a period, we find that we have $\Delta t_{max} < \frac{T}{\pi}$ i
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=100mm]{pic4.jpg}
+\includegraphics[width=100mm]{img/pic4.jpg}
 \end{figure}
 
 If we draw $H \mbox{vs} T$:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=100mm]{pic5.jpg}
+\includegraphics[width=100mm]{img/pic5.jpg}
 \end{figure}
 
 Every step we make an error, that comes from using an approximate hamiltonian, but errors at successive steps are anticorrelated. This is in a certain way correlated to time reversibility: if energy diverges, we expect energy to increase or decrease with the same likelihood. 
@@ -935,14 +935,14 @@ If we have unharmonicity in the potential, it will introduce a drift up or down 
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=100mm]{pic6.jpg}
+\includegraphics[width=100mm]{img/pic6.jpg}
 \end{figure}
 
 If the system is quasi-harmonic the drift will be very small. Decreasing $\Delta t$ makes fluctuations and slope of the drift decrease.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=100mm]{pic7.jpg}
+\includegraphics[width=100mm]{img/pic7.jpg}
 \end{figure}
 
 Usually it's said that fluctuations have to be $< k_B T$, but big systems have larger fluctuations and this is not what it's done.\newline
@@ -953,7 +953,7 @@ In molecular dynamics higher order integrators aren't used because $\epsilon \pr
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=100mm]{pic8.jpg}
+\includegraphics[width=100mm]{img/pic8.jpg}
 \end{figure}
 
 Higher order algorithms mean that error becomes smaller faster when decreasing $\Delta t $, but gets bigger faster when increasing timestep. Since in molecular dynamics quite large $\Delta t$ are often used, integrators of higher order are useless to this purpose, higher order algorithms are used for very short $\Delta t$ in computations like predicting trajectories of planets or artifical satellites.\newline
@@ -962,7 +962,7 @@ Often we have systems with many degrees of freedom that lead to non linear equat
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=100mm]{pic9.jpg}
+\includegraphics[width=100mm]{img/pic9.jpg}
 \end{figure}
 
 \section{Leap frog}
@@ -1024,7 +1024,7 @@ $$<K^2> - <K>^2 = k_B T^2 \frac{\partial <K>}{\partial T} = \frac{N_f k_B^2 T^2}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=100mm]{pic10.jpg}
+\includegraphics[width=100mm]{img/pic10.jpg}
 \end{figure}
 
 $$\sqrt{\frac{<K^2> - <K>^2}{<K>}} = \sqrt{\frac{2}{N_f}}$$
@@ -1039,7 +1039,7 @@ where $e^{-\beta K}$ says that large values of kinetic energy are not likely and
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=100mm]{pic11.jpg}
+\includegraphics[width=100mm]{img/pic11.jpg}
 \end{figure}
 
 We want to do this in 3N dimension ($= N_f$): width of the skin (in p) per surface of inner ipersphere.
@@ -1056,7 +1056,7 @@ $$\mathcal{P}(K) \propto K^{\frac{N_f}{2}-1}e^{-\beta K}$$
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=100mm]{pic12.jpg}
+\includegraphics[width=100mm]{img/pic12.jpg}
 \end{figure}
 
 Doing the first derivative of $\mathcal{P}(K)$ and imposing it's equal to zero, we can find K that maximizes $\mathcal{P}$, that is $K = \left ( \frac{N_f}{2}-1 \right )k_B T$.\newline
@@ -1140,7 +1140,7 @@ that gives $cx = by$, that is: $\frac{c}{b}=\frac{y}{x}$
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=100mm]{pic13.jpg}
+\includegraphics[width=100mm]{img/pic13.jpg}
 \end{figure}
 
 All arrows entering compensate with arrows exiting. In this case balance implies detailed balance (actually it's the same thing, since there is no sum to do).
@@ -1149,14 +1149,14 @@ All arrows entering compensate with arrows exiting. In this case balance implies
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=100mm]{pic14.jpg}
+\includegraphics[width=100mm]{img/pic14.jpg}
 \end{figure}
 
 In this case detailed balance isn't satisfied, but balance is.There is a net current different from zero.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=100mm]{pic15.jpg}
+\includegraphics[width=100mm]{img/pic15.jpg}
 \end{figure}
 
 $$\pi = \left ( \begin{array}{ccc} 1-x & x & x \\ x & 1-x & x \\ 0 & 0 & 1-2x \end{array} \right )$$
@@ -1165,7 +1165,7 @@ The system in its entirety is not ergodic, but if we consider only 1 and 2 it is
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=100mm]{pic16.jpg}
+\includegraphics[width=100mm]{img/pic16.jpg}
 \end{figure}
 
 $$\pi = \left ( \begin{array}{ccc} 1-x & x & 0 \\ x & 1-x & 0 \\ 0 & 0 & 1 \end{array} \right )$$
@@ -1179,7 +1179,7 @@ Physics meaning: \textbf{detailed balance means there is no net current and desc
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=100mm]{pic17.jpg}
+\includegraphics[width=100mm]{img/pic17.jpg}
 \end{figure}
 
 $$\pi_{ji} = (\mbox{probability of proposing move j})\cdot (\mbox{probability of accepting it}) = M_{ji} \cdot \alpha_{ji}$$
@@ -1256,7 +1256,7 @@ Actually one should choose $\alpha$ in order to optimize the product $\alpha \cd
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=100mm]{pic18.jpg}
+\includegraphics[width=100mm]{img/pic18.jpg}
 \end{figure}
 
 
