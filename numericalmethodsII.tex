@@ -607,10 +607,6 @@ $$\frac{V_{H_2O}^2}{V_{H_2}^2V_{O_2}} \propto \frac{m_{H_2}^3 m_{O_2}^\frac{3}{2
 
 that is the \textbf{law of mass action}. It is very important because shows that we can shift chemical equilibrium towards products or reagents by changing the mass (using isotopes). This comes from the kinetic contribution to the partition function $\mathcal{Z}$.
 
-%%%%%%%%%%%%%%%
-%MOLECULAR DYNAMICS%
-%%%%%%%%%%%%%%%
-
 \chapter{Molecular Dynamics}
 
 \section{Hamilton Formalism}
@@ -1065,7 +1061,7 @@ This analysis is valid only for K, but irrespectively of the system, given that 
 $$\mathcal{P}(U) \propto U^{\frac{N_f}{2}-1}e^{-\beta U}$$
 $$\mathcal{P}(H) \propto K^{N_f-1}e^{-\beta H} \mbox{ since degrees of freedom are 6N}$$
 
-\section{Monte Carlo Integration Method}
+\section{Monte Carlo Method}
 
 Monte Carlo integration is a technique for numerical integration using random numbers. It is a particular Monte Carlo method that numerically computes a definite integral. While other algorithms usually evaluate the integrand at a regular grid, Monte Carlo randomly choose points at which the integrand is evaluated. This method is particularly useful for higher-dimensional integrals. Monte Carlo is useful also when the number of points that are contributing to the integral is a tiny fraction.\newline
 Crude Monte Carlo sampling is not efficient if most of the points won't be relevant: most of the calculations will be useless.
@@ -1173,7 +1169,12 @@ $$\pi = \left ( \begin{array}{ccc} 1-x & x & 0 \\ x & 1-x & 0 \\ 0 & 0 & 1 \end{
 This is a non-ergodic system. It's like putting together two systems that don't see each other. This is a nasty case: if I start a Monte Carlo simulation from state 3 I will have convergence, but also if I start from state 1 or 2, however the results will be different. This is a very difficult mistake to find and we have to be very careful.
 \end{itemize}
 
-Physics meaning: \textbf{detailed balance means there is no net current and describes equilibrium, while balance means there is a net current and describes non equilibrium}.
+Physical meaning: \textbf{detailed balance means there is no net current and describes equilibrium, while balance means there is a net current and describes non equilibrium}. In other words, when there isn't detailed balance, it means that something non conservative is happening.\newline
+Since:
+
+$$\mathcal{P}(p,q) \propto \mathcal{P}(q) \mathcal{P}(p)$$
+
+Monte Carlo algorithms are typically performed on position only, since q and p distribution are independent.
 
 \subsection{Metropolis algorithm and Pseudocode}
 
@@ -1259,6 +1260,89 @@ Actually one should choose $\alpha$ in order to optimize the product $\alpha \cd
 \includegraphics[width=100mm]{img/pic18.jpg}
 \end{figure}
 
+A smart move should be to move all particles together, but if all particles are moved randomly, since $\Delta H \propto \sqrt{N}$, the acceptance drops. There are algorithm designed to create moves of group of particles in a smart way, they are more efficient, the tricky part is to compute $\frac{M_{x \leftarrow x_{TRY}}}{M_{x_{TRY}\leftarrow x}}$.
 
+\subsubsection{Grand Canonical Monte Carlo}
+
+Since injecting a particle raises the energy, Grand Canonical Monte Carlo are designed to have algorithms that inject particles where density is low, in order not to vary too much total energy.
+
+\paragraph{Lennard-Jones Pseudocode}
+
+\begin{lstlisting}
+//initialize
+x[natoms]
+
+for (int istep = 0; istep < nsteps; istep++)	{
+	- Choose particle i randomly
+	- Move i
+	- Compute energy (we should have previous value saved somewhere)
+	- Accept/Reject
+}
+\end{lstlisting}
+
+This algorithm is time reversible, but usually we don't choose particle i randomly:
+
+\begin{lstlisting}
+//initialize
+x[natoms]
+
+for (int istep = 0; istep < nsteps; istep++)	{
+	for( int i = 0; i < natoms; i++)	{
+	- Move i
+	- Compute energy (we should have previous value saved somewhere)
+	- Accept/Reject
+	}
+}
+\end{lstlisting}
+
+The a step of the inner loop is usually called a \textit{Monte Carlo Sweep}. In this case, the algorithm is not time reversible, because I know the order of the particles moving: if I see particle 10 moving before particle 9, I know the time is reversed. This breaks detailed balance, but it's not an issue, since balance is still satisfied.
+
+\subsection{Hybrid Monte Carlo}
+
+This method uses integrators to propose a new move at H very similar to the previous one. For example we can use Velocity Verlet from molecular dynamics in order to generate an attempt set of $p, q$ and then accept or reject this set. If energy is almost conserved, acceptance is almost equal to one.\newline
+In some sense Monte Carlo corrects imperfections of molecular dynamics: if proposed move is decent enough, with one calculation we have moved all the particles.\newline
+Detailed balance is not satisfied, but it's satisfied a condition called \textbf{generalized detailed balance}:
+
+$$P_B \pi_{BA} = \pi_{A*B*} P_{A*}$$
+
+Notice that this condition should be on $M_{ij}, M_{ji}$, but if E is conserved, the move will be approved and these quantities are the same (further discussion on this: \textit{Stochastic Methods: A Handbook for the Natural and Social Sciences}, C. Gardiner).\newline
+Actually this condition is the same as:
+
+$$J_{B \leftarrow A} = J_{A* \leftarrow B*} = 1$$
+
+since one is the inverse of the other.\newline
+If we use an integrator that is time reversible and conserves energy and density, we have $\pi_{AB} = \pi_{A*B*}$, $P_B = P_{A*}$. Generalized detailed balance is satisfied.\newline
+If we use an integrator as Velocity Verlet, we find approximate solutions: energy is almost (but not!) conserved. We won't be sure that generalized detailed balance will be satisfied:
+
+$$\frac{M_{A*B*}P_{B*}}{M_{BA}P_A} = E^{-\beta \left ( \tilde{H}_B - \tilde{H}_A \right )} \ne 1$$
+
+If energy is almost conserved, we can say that this quantity is close to one and ignore the \textit{accept/reject step}. This leads to a more efficient but less accurate algorithm.\newline
+If we want to conserve energy, we can perform one step of Velocity Verlet, then change $v$ in order to have energy equal to the previous one: we have constant energy by construction. Nobody uses this: it's not more accurate, constant energy doesn't mean I'm sampling micro-canonical ensemble.\newline
+An inconsistency arises: we have gone from sampling a canonical ensemble, to sampling a micro-canonical one.
+
+%immagini sampling micro and canonical
+
+The problem is this algorithm is \textbf{not ergodic} in the canonical ensemble. We said that if a system is not ergodic there is a conserved quantity, in this case is evident that's the energy.\newline
+We can tackle this problem by using a larger $\Delta t$, energy won't be exactly conserved. There is another problem: internal point are accepted, if a move is rejected, the system get stuck in a point. Given $p,q$, the computation of H gives always the same result, so the algorithm will propose always the same move, that's already been rejected. To solve this problem, $p$ are randomized at the beginning of each step.
+
+\paragraph{Pseudocode}
+
+\begin{lstlisting}
+//initialize
+x[natoms]
+
+for (int istep = 0; istep < nsteps; istep++)	{
+	randomize p //to not get stuck in a point. Canonical distribution is left stationary by this step
+	(q', p') = velocity_verlet(q, p, deltat, natoms)
+	/*this deltat is typically higher than one used in traditional Monte Carlo
+	n is usually 10-2*/
+	alpha = min\{1 e^(-beta[H(q', p') - H(q, p)])\}
+	
+	if (alpha < rand())	(q, p) = (q', p') //if you forget this and timestep too large, simulation explodes
+}
+\end{lstlisting}
+
+However there's a big gain when we can exploit trick to compute energy on all the particles in a simple way. Otherwise the gain is reduced by the fact that recomputing energy for moves of fewer particles is much less expensive.\newline
+Another issue is how much energy should vary: it should vary of fraction of $k_B T$, since if $\Delta E \sim 0.01 k_B \rightarrow \alpha \simeq 1$. Fluctuations depend on N, this is the main reaosn because hybrid monte Carlo is not very used: it doesn't scale with N. It's obvious: more atoms mean that a hit between two of them is more likely, so it's more likely the energy will vary a lot. Increasing N we have to use a shorter timestep.
 
 \end{document}

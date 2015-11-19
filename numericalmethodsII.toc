@@ -33,7 +33,9 @@
 \contentsline {subsection}{\numberline {2.5.1}Pseudocode}{27}
 \contentsline {section}{\numberline {2.6}Different types of ensembles and Properties of canonical ensemble}{28}
 \contentsline {paragraph}{Properties of canonical ensemble}{28}
-\contentsline {section}{\numberline {2.7}Monte Carlo Integration Method}{31}
+\contentsline {section}{\numberline {2.7}Monte Carlo Method}{31}
 \contentsline {subsection}{\numberline {2.7.1}Markov Chain Monte Carlo}{31}
 \contentsline {paragraph}{Examples: two and three states systems}{32}
 \contentsline {subsection}{\numberline {2.7.2}Metropolis algorithm and Pseudocode}{35}
+\contentsline {subsubsection}{Grand Canonical Monte Carlo}{37}
+\contentsline {subsection}{\numberline {2.7.3}Hybrid Monte Carlo}{38}
