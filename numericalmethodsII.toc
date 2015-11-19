@@ -1,0 +1,39 @@
+\select@language {italian}
+\select@language {italian}
+\contentsline {chapter}{\numberline {1}Statistical Mechanics}{3}
+\contentsline {section}{\numberline {1.1}Postulate of Classical Statistical Mechanics}{3}
+\contentsline {paragraph}{Liouville's Theorem}{5}
+\contentsline {section}{\numberline {1.2}Microcanonical ensemble}{5}
+\contentsline {paragraph}{A second definition of entropy}{8}
+\contentsline {paragraph}{Laser - Different behavior of S and T}{9}
+\contentsline {paragraph}{Phase transitions}{10}
+\contentsline {paragraph}{Computing observables}{10}
+\contentsline {subsection}{\numberline {1.2.1}Computing $\rho $}{10}
+\contentsline {section}{\numberline {1.3}Canonical Ensemble}{11}
+\contentsline {subsection}{\numberline {1.3.1}Computing $\rho $}{11}
+\contentsline {paragraph}{Physical meaning of $\beta $}{12}
+\contentsline {subsection}{\numberline {1.3.2}Fluctuation and dissipation relationship}{12}
+\contentsline {subsection}{\numberline {1.3.3}Helmholtz Free Energy}{13}
+\contentsline {paragraph}{Disturbing fact}{14}
+\contentsline {section}{\numberline {1.4}Grand canonical ensemble}{14}
+\contentsline {subsection}{\numberline {1.4.1}Ideal gas}{16}
+\contentsline {subsection}{\numberline {1.4.2}Derivation of law of mass action}{16}
+\contentsline {chapter}{\numberline {2}Molecular Dynamics}{18}
+\contentsline {section}{\numberline {2.1}Hamilton Formalism}{18}
+\contentsline {paragraph}{Harmonic Oscillator}{19}
+\contentsline {section}{\numberline {2.2}Liouville Formalism}{19}
+\contentsline {paragraph}{Properties of trajectories}{20}
+\contentsline {section}{\numberline {2.3}Verlet Algorithm}{21}
+\contentsline {subsection}{\numberline {2.3.1}Pseudocode}{22}
+\contentsline {section}{\numberline {2.4}Velocity Verlet Algorithm}{22}
+\contentsline {paragraph}{Best choice: Trotter splitting}{23}
+\contentsline {subsection}{\numberline {2.4.1}Pseudocode}{23}
+\contentsline {paragraph}{Example: harmonic oscillator}{24}
+\contentsline {section}{\numberline {2.5}Leap frog}{27}
+\contentsline {subsection}{\numberline {2.5.1}Pseudocode}{27}
+\contentsline {section}{\numberline {2.6}Different types of ensembles and Properties of canonical ensemble}{28}
+\contentsline {paragraph}{Properties of canonical ensemble}{28}
+\contentsline {section}{\numberline {2.7}Monte Carlo Integration Method}{31}
+\contentsline {subsection}{\numberline {2.7.1}Markov Chain Monte Carlo}{31}
+\contentsline {paragraph}{Examples: two and three states systems}{32}
+\contentsline {subsection}{\numberline {2.7.2}Metropolis algorithm and Pseudocode}{35}
