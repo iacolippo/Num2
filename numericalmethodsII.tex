@@ -1352,7 +1352,116 @@ for (int istep = 0; istep < nsteps; istep++)	{
 \end{lstlisting}
 
 However there's a big gain when we can exploit trick to compute energy on all the particles in a simple way. Otherwise the gain is reduced by the fact that recomputing energy for moves of fewer particles is much less expensive.\newline
-Another issue is how much energy should vary: it should vary of fraction of $k_B T$, since if $\Delta E \sim 0.01 k_B \rightarrow \alpha \simeq 1$. Fluctuations depend on N, this is the main reaosn because hybrid Monte Carlo is not very used: it doesn't scale with N. 
-It's obvious: more atoms mean that a hit between two of them is more likely, so it's more likely the energy will vary a lot. Increasing N we have to use a shorter timestep.
+Another issue is how much energy should vary: it should vary of fraction of $k_B T$, since if $\Delta E \sim 0.01 k_B \rightarrow \alpha \simeq 1$. Fluctuations depend on N, this is the main reason because hybrid Monte Carlo is not very used: it doesn't scale with N. 
+It's obvious: more atoms mean that a hit between two of them is more likely, so it's more likely the energy will vary a lot. Increasing N we have to use a shorter timestep.\newline
+Another issue to discuss is why we don't perform an accept/reject after randomizing p: if the move is correct, it should always be accepted, since we should have $M_{AB} = \bar{P_A}$, $M_{BA} = \bar{P_B}$, so $\alpha = \mbox{min}\left \{ 1, \frac{\bar{P_B}M_{AB}}{\bar{P_A}M_{BA}}=1 \right \} = 1$.\newline
+Notice that if we implemented an algorithm with a stochastic term in Verlet velocity and without randomizing p at every step, we would satisfy generalized detailed balance, so we wouldn't need to modify the code.
 
+\section{Thermostats}
+
+We usually relate simulations at fixed energy with experiments at fixed temperature.\newline
+In $\mu$canonical ensemble we can define $T$ as: 
+
+$$T = \frac{<K>}{\frac{3}{2}N k_B}$$
+
+So we can run simulation at some initial condition at constant energy and then find T. If we want higher T we increase initial energy.
+
+%immagine <K>
+
+\subsection{Velocity rescaling, Berendsen Thermostat and Pseudocode}
+
+If we want to keep temperature almost constant, we can rescale velocity at some step multiplying p by $\sqrt{\frac{K_{TARGET}}{K}} \rightarrow p_{NEW} = p_{OLD}\sqrt{\frac{K_{TARGET}}{K}}$. New kinetic energy will be equal to the target one. The frequency of this rescaling defines the strength of the thermostat: doing it rarely gives a more accurate trajectory but less constant temperature, while doing it often keeps temperature almost constant, but trajectory is more affected.\newline
+In this algorithm not all the steps are equal, this is not pleasing because we can't calculate autocorrelation functions: there's something periodic happening. It would be nice to have something smoother, continuous.\newline
+We could compute a $K_{TARGET}$ which is close to the constant, but not equal, using differential equations:
+
+$$dK = \frac{\frac{3}{2}N k_B T - K}{\tau} dt \rightarrow dK = (\bar{K} - K) \frac{dt}{\tau}$$
+
+$\tau$ is an input parameter that gives the timescale of relaxation: it gives the intensity of the thermostat. If $\tau =1$ and $dt = 10^{-3}$, in $10^3$ steps kinetic energy will be relaxed.
+
+$$K(t+\Delta t) = \bar{K} + (k - \bar{K})e^{-\frac{\Delta t}{\tau}} = K(t) e^{-\frac{\Delta t}{\tau}} + \bar{K}\left ( 1- e^{-\frac{\Delta t}{\tau}} \right )$$
+
+if $\tau=0$, $K_{new} = \bar{K}$, new kinetic energy is the target one, while if $\tau \to \infty$, $K_{new}=K_{old}$ since there is no thermostat acting (it's like rescaling with infinite period, it never happens). We should notice that K is changing also because we're integrating the equations of motion, but we're just combining the effect of the equation (it's something similar to Trotter splitting). This is called \textbf{Berendsen Thermostat}.
+
+\paragraph{Pseudocode}
+
+\begin{lstlisting}
+//initialize
+q[natoms]
+p[natoms]
+
+for (int istep = 0; istep < nsteps; istep++)	{
+	
+	(q, p) = velocity_verlet(q, p, deltat, natoms)
+	
+	scaling_factor = sqrt( (K(p) e^(-deltat/tau) + K_bar (1-e^(-deltat/tau)) )/( K(p) - K_actual ) ) //numerator is similar to a weighted average with two factors that add to one
+	
+	p = p*scaling_factor //all p are scaled
+}
+\end{lstlisting}
+
+This works as a real thermostat: it measures T and correct it. This thermostat has a problem: it doesn't enforce anywhere canonical distribution: when $\tau \to 0$ this is not ergodic, K is going to be a fixed value. Fluctuations are never right for K with this algorithm. It's not possible to know in advance which distribution you will be sampling. It is used anyway because simulations equilibrate very quickly.\newline
+This is a \textbf{global thermostat}: you don't need to measure each particle, but $K_{TOT}$ and correct it to a proper value. This doesn't work if a system is decoupled in two points. Typically systems get to thermic equilibrium quickly, if it's not a special case.
+
+\subsection{Andersen Thermostat and Pseudocode}
+
+Instead of scaling all p with some factor, we could randomize them.
+
+\paragraph{Pseudocode}
+
+\begin{lstlisting}
+void randomize(p)	{
+	for( i = 0; i < natoms; i++)	{
+		for( j = 0; j < 3; j++)	{
+			p[i][j] = gasdev()*sqrt(m_i/beta) //gasdev returns a RN from gaussian distribution
+			}
+		}
+}
+
+//initialize
+q[natoms]
+p[natoms]
+
+for (int istep = 0; istep < nsteps; istep++)	{
+	
+		if(step\%stride)	p = randomize() //stride is the strength of the thermostat
+	(q, p) = vv(q, p)
+}
+\end{lstlisting}
+
+This thermostat is local: at every step, you affect each of the particles indipendently of the others. It's a \textbf{local thermostat}.
+This algorithm is disliked because there are steps different from others.We can play a trick similar to the one used before:ù
+
+$$p_{NEW} = c_1 p_{OLD} + c_2 \sqrt{m_i k_B T} R$$
+
+where $c_1^2+c_2^2 = 1$, since $p_{NEW}$, $p_{OLD}$, $R$ should be Gaussian and the linear combination of a gaussian is also gaussian.
+
+$$c_1 = e^{-\frac{\Delta t}{\tau}}$$
+
+$$c_2 = \sqrt{1- e^{-2\frac{\Delta t}{\tau}}}$$
+
+so
+
+$$p_{NEW} = e^{-\frac{\Delta t}{\tau}} p_{OLD} + \sqrt{1- e^{-2\frac{\Delta t}{\tau}}} \sqrt{m_i k_B T} R$$
+
+if $\frac{\Delta t}{\tau} << 1$ we can linearize:
+
+$$p_{NEW} = (1 - \frac{\Delta t}{\tau}) p_{OLD} + \sqrt{2\frac{\Delta t}{\tau}} \sqrt{m_i k_B T} R$$
+
+we can write:
+
+$$\Delta p = -\frac{\Delta t}{\tau} p_{OLD} + \sqrt{\frac{2\Delta t m_i k_B T}{\tau}} R$$
+
+if we define $\gamma_p = \frac{1}{\tau}$ :
+
+$$\Delta p = -\gamma_p p \Delta t - \sqrt{2 m_i k_B T \gamma} \sqrt{\Delta t} R$$
+
+this increment of the momentum is $\Delta p = F \Delta t$, so there is a force acting on particles: 
+
+$$F = -\gamma_p p \propto -p$$ 
+
+It's a frictional force. The other term:
+
+$$- \sqrt{2 m_i k_B T \gamma} \sqrt{\Delta t} R$$ 
+
+is a random force that describes thermic effects. in the limit of $\Delta t \to 0$ it goes to infinity.
 \end{document}
