@@ -1303,18 +1303,18 @@ This method uses integrators to propose a new move at H very similar to the prev
 In some sense Monte Carlo corrects imperfections of molecular dynamics: if proposed move is decent enough, with one calculation we have moved all the particles.\newline
 Detailed balance is not satisfied, but it's satisfied a condition called \textbf{generalized detailed balance}:
 
-$$P_B \pi_{BA} = \pi_{A*B*} P_{A*}$$
+$$P_B \pi_{BA} = \pi_{A^*B^*} P_{A^*}$$
 
 Notice that this condition should be on $M_{ij}, M_{ji}$, but if E is conserved, the move will be approved and these quantities are the same (further discussion on this: \textit{Stochastic Methods: A Handbook for the Natural and Social Sciences}, C. Gardiner).\newline
 Actually this condition is the same as:
 
-$$J_{B \leftarrow A} = J_{A* \leftarrow B*} = 1$$
+$$J_{B \leftarrow A} = J_{A^* \leftarrow B^*} = 1$$
 
 since one is the inverse of the other.\newline
 If we use an integrator that is time reversible and conserves energy and density, we have $\pi_{AB} = \pi_{A*B*}$, $P_B = P_{A*}$. Generalized detailed balance is satisfied.\newline
 If we use an integrator as Velocity Verlet, we find approximate solutions: energy is almost (but not!) conserved. We won't be sure that generalized detailed balance will be satisfied:
 
-$$\frac{M_{A*B*}P_{B*}}{M_{BA}P_A} = E^{-\beta \left ( \tilde{H}_B - \tilde{H}_A \right )} \ne 1$$
+$$\frac{M_{A^*B^*}P_{B^*}}{M_{BA}P_A} = e^{-\beta \left ( \tilde{H}_B - \tilde{H}_A \right )} \ne 1$$
 
 If energy is almost conserved, we can say that this quantity is close to one and ignore the \textit{accept/reject step}. This leads to a more efficient but less accurate algorithm.\newline
 If we want to conserve energy, we can perform one step of Velocity Verlet, then change $v$ in order to have energy equal to the previous one: we have constant energy by construction. Nobody uses this: it's not more accurate, constant energy doesn't mean I'm sampling micro-canonical ensemble.\newline
@@ -1345,9 +1345,9 @@ for (int istep = 0; istep < nsteps; istep++)	{
 	(q', p') = velocity_verlet(q, p, deltat, natoms)
 	/*this deltat is typically higher than one used in traditional Monte Carlo
 	n is usually 10-20*/
-	alpha = min\{1 e^(-beta[H(q', p') - H(q, p)])\}
+	alpha = min{1, e^(-beta[H(q', p') - H(q, p)])}
 	
-	if (alpha < rand())	(q, p) = (q', p') //if you forget this and timestep too large, simulation explodes
+	if (alpha > rand())	(q, p) = (q', p') //if you forget this and timestep too large, simulation explodes
 }
 \end{lstlisting}
 
@@ -1366,7 +1366,10 @@ $$T = \frac{<K>}{\frac{3}{2}N k_B}$$
 
 So we can run simulation at some initial condition at constant energy and then find T. If we want higher T we increase initial energy.
 
-%immagine <K>
+\begin{figure}[H]
+\centering
+\includegraphics[width=100mm]{img/pic21.jpg}
+\end{figure}
 
 \subsection{Velocity rescaling, Berendsen Thermostat and Pseudocode}
 
@@ -1423,7 +1426,7 @@ p[natoms]
 
 for (int istep = 0; istep < nsteps; istep++)	{
 	
-		if(step\%stride)	p = randomize() //stride is the strength of the thermostat
+		if(step%stride)	p = randomize() //stride is the strength of the thermostat
 	(q, p) = vv(q, p)
 }
 \end{lstlisting}
@@ -1464,4 +1467,207 @@ It's a frictional force. The other term:
 $$- \sqrt{2 m_i k_B T \gamma} \sqrt{\Delta t} R$$ 
 
 is a random force that describes thermic effects. in the limit of $\Delta t \to 0$ it goes to infinity.
+
+\chapter{Assignments}
+
+\section{Assignment 1}
+
+\paragraph{Preliminary comments}
+
+First, we take a look at the input file:
+
+\begin{lstlisting}
+inputfile crystal.xyz
+outputfile output.xyz
+temperature 0.1
+tstep 0.05
+friction 0.0
+forcecutoff 2.5
+listcutoff  3.0
+nstep 2000
+nconfig 10 trajectory.xyz
+nstat   10 energies.dat
+\end{lstlisting}
+
+File crystal.xyz is an input file which contains the crystal structure of the system. Temperature is in $k_B T$ units. Timestep is chosen initializing \textit{tstep} variable. Number of steps is chosen with \textit{nstep}. \textit{Forcecutoff} tells how far interactions are different from zero. List cutoff is a parameter for neighbors list computation optimization.\newline
+This standard input file makes sense, but 2000 is a very short simulation, we may want to increase this number.
+
+\medskip
+
+\textbf{Nerd stuff:} 
+\begin{lstlisting}[language=bash]
+ln -s ../cpp/simplemd.x
+\end{lstlisting}
+
+creates a shortcut to execute simplemd.x with
+
+\begin{lstlisting}[language=bash]
+./simplemd.x
+\end{lstlisting}
+
+Notice that our system has $3N-3$ degrees of freedom, since velocity of center of mass is conserved, so:
+
+$$T \ne \frac{<K>}{\frac{3N_A}{2} K_B} \rightarrow T = \frac{<K>}{\frac{3N_A-3}{2} K_B} $$
+
+This is the temperature for a microcanonical ensemble. We can see how temperature varies with time with gnuplot writing in the terminal:
+
+\begin{lstlisting}[language=bash]
+$gnuplot
+>plot 'energies.dat' u 2:3
+\end{lstlisting}
+
+\textit{to update plot: push e}
+
+\medskip
+
+We see that temperature equilibrates around a value that is more or less $50\%$ of the starting one. This is because we are initializing atoms in a configuration of minimal potential energy, it can't become lower, so when part of kinetic energy becomes potential energy, temperature decreases. Since around a half of kinetic energy becomes potential, the final value of temperature is about half the initial one.
+
+We can automate simulations at different temperatures writing \textbf{bash scripts}:
+
+\begin{lstlisting}[language=bash]
+#! /bin/bash
+
+for T in 0.01 0.1 1 10
+do
+
+cat > input-$T << EOF
+inputfile crystal.xyz
+outputfile output.xyz
+temperature $T
+tstep 0.05
+friction 0.0
+forcecutoff 2.5
+listcutoff  3.0
+nstep 20000
+nconfig 10 trajectory.xyz
+nstat   10 energies-$T.dat
+EOF
+
+done
+\end{lstlisting}
+
+Then we get the permission to execute the script in terminal with
+
+\begin{lstlisting}[language=bash]
+$chmod a+x script-filename
+\end{lstlisting}
+
+and we can execute it from terminal or by double-click.
+
+\paragraph{Energy conservation - drift and fluctuations}
+
+The proper way to evaluate drift would be to fit data with a straight line and take its angular coefficient. We can do it in a simpler and rough way by computing the difference between final and initial value and divide by the total step.\newline
+As before, we can write a bash script to automate different simulations at different time-step values, we define nstep in function of time-step in order to have the same number of samples:
+
+
+\begin{lstlisting}[language=bash]
+#! /bin/bash
+
+for tstep in 0.005 0.01 0.05 0.1 0.5
+do
+
+cat > input << EOF
+inputfile crystal.xyz
+outputfile output.xyz
+temperature 0.722
+tstep $tstep
+friction 0.0
+forcecutoff 2.5
+listcutoff  3.0
+nstep $((100000*tstep))
+nconfig 10 trajectory.xyz
+nstat   10 energies-$tstep.dat
+EOF
+
+done
+\end{lstlisting}
+
+We find that energy conservation is not as good using a higher time-step, but simulation ends up much faster. Slope of drift increases with increasing time-step. Traditional timesteps used for this system are: $0.01$ and $0.005$.\newline
+In some simulations we see something weird: the drift is going downwards. If the system is non-harmonic we should see system go up, but it's a metter of probability, in our case 4 on 5 simulations go up and it's reasonable.
+
+\medskip
+
+As before, the proper way to compute fluctuations would be to fit with a straight line and then take the residuals. It can be done roughly by computing variance with another bash script and help of \textbf{awk}.  A script to compute both drift and fluctuations:
+
+
+\begin{lstlisting}[language=bash]
+#! /bin/bash
+
+awk '{
+    if(NR==2) {
+        initial_time = $2 #because first value is our inizialization and can lead to spurious results.
+        initial_value = $5
+        }
+}
+    sum+=$2
+    sum2+=$5*$5
+END{
+    sum2/=NR #NR is a predefined variable = numbers of rows
+    sum/=NR
+    print sum2-sum #variance
+    print ($5-initial_value)/($2-initial_time)
+}' 
+energies-$tstep.dat
+
+done
+\end{lstlisting}
+
+\medskip
+
+\textbf{Nerd stuff:} 
+\begin{lstlisting}[language=bash]
+plot[][:0] '...'
+\end{lstlisting}
+
+doesn't show data with $y > 0$.
+
+\medskip
+
+If we plot our data, we find that fluctuations and drift increase with time-step. With our value of drift we can estimate how long has to be the simulation to explode (sooner or later it will arrive to zero if $\mbox{angular coefficient}>0$.\newline
+This is one of the reason why simulations at constant temperature are preferred to simulations at constant energy. Of course there are tricks to avoid this, for example, introducing a different error, you could enforce energy conservation by rescaling potential energy, in this way you lose time-reversibility, but recover stability of the algorithm.
+
+\paragraph{Simulations at different temperatures - maximum allowed time-step}
+
+Again we can automate the task of running simulations at different temperatures with a bash script.\newline
+What we would expect is that increasing temperature doesn't affect the maximum allowed time-step, since it depends only on the shortest period, which isn't function of T. What we see in our simulations instead is that maximum allowed time-step decrease with increasing temperature: this is because what we implement is not an harmonic oscillator, actually, the rule of fastest period gives an upper bound for the timestep.
+
+\paragraph{Drift and fluctuations in relation to the size of the system}
+
+We can write a bash script like:
+
+\begin{lstlisting}[language=bash]
+#! /bin/bash
+
+for n in 2 3 4 5
+do
+
+./lattice n > crystal-$((n*n*n*4)).xyz
+
+cat > input-$T-$tstep << EOF
+inputfile crystal.xyz
+outputfile output.xyz
+temperature 0.722
+tstep 0.005
+friction 0.0
+forcecutoff 2.5
+listcutoff  3.0
+nstep 20000
+nconfig 10 trajectory.xyz
+nstat   10 energies-$((n*n*n*4)).dat
+EOF
+
+done
+\end{lstlisting}
+
+to generate several crystal structures and run simulations.\newline
+To check if we haven't done any mistake, we can plot temperature in function of time and see that it doesn't vary much among simulations, this is correct because it's an intensive quantity. The same is for energy per particle: it is similar among simulations, while if we plot total energies, they're different because depending on number of atoms.\newline
+Results of simulations show that drift and fluctuations increase with size of the system.
+
+Drift increases with the size of the system. Fluctuations increase with the size of the system.
+
+\paragraph{Bonus level}
+
+Download vmd and learn how to use it. You can see your crystal structure and its dynamics.\newline
+An interesting fact is that you can see periodic boundary conditions: a particle going outside the cube reappears at the other side of it.\newline
+Simulations at constant energy are not very physical actually, we have a lot of approximation such as finite size effects and so on.
 \end{document}
