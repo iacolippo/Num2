@@ -41,11 +41,12 @@
 \contentsline {subsection}{\numberline {2.7.3}Hybrid Monte Carlo}{38}
 \contentsline {section}{\numberline {2.8}Thermostats}{40}
 \contentsline {subsection}{\numberline {2.8.1}Velocity rescaling, Berendsen Thermostat and Pseudocode}{40}
-\contentsline {subsection}{\numberline {2.8.2}Andersen Thermostat and Pseudocode}{41}
-\contentsline {chapter}{\numberline {3}Assignments}{43}
-\contentsline {section}{\numberline {3.1}Assignment 1}{43}
-\contentsline {paragraph}{Preliminary comments}{43}
-\contentsline {paragraph}{Energy conservation - drift and fluctuations}{44}
-\contentsline {paragraph}{Simulations at different temperatures - maximum allowed time-step}{45}
-\contentsline {paragraph}{Drift and fluctuations in relation to the size of the system}{45}
-\contentsline {paragraph}{Bonus level}{46}
+\contentsline {subsection}{\numberline {2.8.2}Andersen, Langevin Thermostat and Pseudocode}{42}
+\contentsline {section}{\numberline {2.9}Stochastic differential equations}{44}
+\contentsline {chapter}{\numberline {3}Assignments}{47}
+\contentsline {section}{\numberline {3.1}Assignment 1}{47}
+\contentsline {paragraph}{Preliminary comments}{47}
+\contentsline {paragraph}{Energy conservation - drift and fluctuations}{48}
+\contentsline {paragraph}{Simulations at different temperatures - maximum allowed time-step}{49}
+\contentsline {paragraph}{Drift and fluctuations in relation to the size of the system}{50}
+\contentsline {paragraph}{Bonus level}{50}

@@ -1059,7 +1059,7 @@ Doing the first derivative of $\mathcal{P}(K)$ and imposing it's equal to zero, 
 This analysis is valid only for K, but irrespectively of the system, given that it's canonical. This holds also for U for the harmonic oscillator, because U has the same functional form of K in that case. So, \textbf{for the harmonic oscillator}:
 
 $$\mathcal{P}(U) \propto U^{\frac{N_f}{2}-1}e^{-\beta U}$$
-$$\mathcal{P}(H) \propto K^{N_f-1}e^{-\beta H} \mbox{ since degrees of freedom are 6N}$$
+$$\mathcal{P}(H) \propto H^{N_f-1}e^{-\beta H} \mbox{ since degrees of freedom are 6N}$$
 
 \section{Monte Carlo Method}
 
@@ -1405,7 +1405,26 @@ for (int istep = 0; istep < nsteps; istep++)	{
 This works as a real thermostat: it measures T and correct it. This thermostat has a problem: it doesn't enforce anywhere canonical distribution: when $\tau \to 0$ this is not ergodic, K is going to be a fixed value. Fluctuations are never right for K with this algorithm. It's not possible to know in advance which distribution you will be sampling. It is used anyway because simulations equilibrate very quickly.\newline
 This is a \textbf{global thermostat}: you don't need to measure each particle, but $K_{TOT}$ and correct it to a proper value. This doesn't work if a system is decoupled in two points. Typically systems get to thermic equilibrium quickly, if it's not a special case.
 
-\subsection{Andersen Thermostat and Pseudocode}
+\medskip
+
+We can derive a differential equation corresponding to this thermostat:
+
+$$\overrightarrow{p}_{NEW} = \overrightarrow{p}_{OLD} \sqrt{1- \frac{\Delta t}{\tau} + \frac{\Delta t}{\tau}\frac{\bar{K}}{K}} = \overrightarrow{p}_{OLD} + \frac{\Delta t}{2 \tau} \left( \frac{\bar{K}}{K} -1 \right ) \overrightarrow{p}_{OLD}$$
+
+in the limit $\Delta t \to 0$. The change of p is proportional to p itself times a factor:
+
+$$\dot{\overrightarrow{p}} = -\frac{1}{2\tau} \left ( 1 - \frac{\bar{K}}{K} \right ) \overrightarrow{p} = -\gamma \overrightarrow{p}$$
+
+$\gamma$ is a friction coefficient, it's a variable (not an input parameter) and it's dependent on $K$. When K is large positive friction slows particles, while when K is small particles are accelerated. The set of non hamiltonian differential equations that descrive Berendsen thermostat is:
+
+$$\begin{cases}
+\dot{q} = \frac{p}{m} \\
+\dot{p} = f - \gamma p
+\end{cases}$$
+
+of course these aren't implemented in an algorithm, we implement $\alpha$ correction factor.
+
+\subsection{Andersen, Langevin Thermostat and Pseudocode}
 
 Instead of scaling all p with some factor, we could randomize them.
 
@@ -1458,7 +1477,7 @@ if we define $\gamma_p = \frac{1}{\tau}$ :
 
 $$\Delta p = -\gamma_p p \Delta t - \sqrt{2 m_i k_B T \gamma} \sqrt{\Delta t} R$$
 
-this increment of the momentum is $\Delta p = F \Delta t$, so there is a force acting on particles: 
+We call this \textbf{integrator for Langevin equation}. The increment of the momentum is $\Delta p = F \Delta t$, so there is a force acting on particles: 
 
 $$F = -\gamma_p p \propto -p$$ 
 
@@ -1466,11 +1485,122 @@ It's a frictional force. The other term:
 
 $$- \sqrt{2 m_i k_B T \gamma} \sqrt{\Delta t} R$$ 
 
-is a random force that describes thermic effects. in the limit of $\Delta t \to 0$ it goes to infinity.
+is a random force that describes thermic effects and it's called \textbf{Wiener noise}. in the limit of $\Delta t \to 0$ it goes to infinity.
+
+$$\Delta p = -\gamma_p p \Delta t - \sqrt{2 m_i k_B T \gamma} \sqrt{\Delta t} R$$
+
+This is a stochastic differential equation and it's the \textbf{Langevin equation}. Using \textbf{It$\hat{o}$ formalism} (which we will use from now on):
+
+$$dp = -\gamma p \Delta t + \sqrt{2 m k_B T \gamma} dW \mbox{ where } dW =  \sqrt{\Delta t} R$$
+
+using \textbf{Stratonovich formalism} we would write:
+
+$$\dot{p} = -\gamma p + \sqrt{2 m k_B T \gamma} \eta \mbox{ where } \eta = \frac{dW}{dt}$$
+
+There are differences between the two ways of describing stochastic differential equations, so we have to be careful and check in which formalism we are working. The process of translating one formalism in the other is very error prone.\newline
+Coming back at the previous equation, we can write more in general:
+
+$$\Delta p = A \Delta t + B \sqrt{\Delta t} R$$
+
+It seems that first term is negligible with respect to the second in the limit of $\Delta t \to 0$, but it's not as it seems. If i double $\Delta t$, I get:
+
+$$\Delta p = A (\Delta t + \Delta t) + \ldots = 2A\Delta t + \ldots $$
+
+for the first part, so the first term grows linearly with $\Delta t$ as I expected, for the second one, one would say:
+
+$$\sqrt{\Delta t} + \sqrt{\Delta t} = \sqrt{2\Delta t} \ne \sqrt{2\Delta t}$$
+
+but THIS IS A WRONG REASONING! The correct way is:
+
+$$\sqrt{\Delta t}R_1 + \sqrt{\Delta t}R_2 = \sqrt{2\Delta t}R_3$$
+
+since the sum of two gaussian random numbers is a gaussian random numbers multiplied by $\sqrt{c_1^2 + c_2^2}$, where $c_i$ are the prefactors. \textbf{Both terms grow linearly with $\Delta t$}. Intuitively the bigness of the $\sqrt{}$ is limited by the fact that increments sums up differently because multiplied by gaussian random numbers.\newline
+It can be demonstrated that the integrator is the exact solution (in probability) of It$\hat{o}$ equation. This is just another step in the algorithm, which implements the thermostat, in fact, using Trotter splitting, we have the same code as before with two more lines.
+
+\paragraph{Pseudocode}
+
+\begin{lstlisting}
+for (int istep = 0; istep < nsteps; istep++)	{
+	p = c1*p + c2*sqrt(m*kB*T)*gasdev() //loop over p_i - step 1
+	(q, p) = vv(q, p) // step 2
+	p = c1*p + c2*sqrt(m*kB*T)*gasdev() //loop over p_i  - step 3
+}
+
+//c1 = exp(-gamma*deltat/2)
+//c2 = sqrt(1-exp(-gamma*deltat/2)*c1^2)
+\end{lstlisting}
+
+Balance is satisfied by this algorithm: if p is distributed as a gaussian of zero mean and unitary variance and gasdev() too, their sum is again a gaussian of zero mean and unitary variance.\newline
+It can be verified that:
+
+$$\frac{\pi_{AB}P_B}{\pi_{BA} P_A} = 1$$
+
+using $P(x' | x) = \frac{1}{\sqrt{2\pi c_2}} e^{-\frac{(x' -c_1 x)^2}{2 c_2}}$ and $c_1^2 + c_2^2 = 1$.\newline
+We notice that energy changes in step 1 and 3 are obvious (since it's what we want), but we don't care since they satisfy detailed balance, while step 2 doesn't conserve energy perfectly and it could be a problem. What is \textbf{almost conserved} in this algorithm is \textbf{total energy - increments from thermostat}.\newline
+This algorithm can be used to implement Hybrid Monte Carlo. Another important thing is that in infinitesimal It$\hat{o}$, R can be distributed in any way as long as it has the correct variance (it can also be infinite, to implement jump processes!), while in the integrator R has to be gaussian.
+
+Langevin thermostat is a local thermostat: each particle's momentum is changed and there is no calculation of total kinetic energy.
+
+\section{Stochastic differential equations}
+
+$$dx = A(x, t)dt + B(x, t)dW$$
+$$\Delta x = A(x, t) \Delta t + B(x, t)\Delta W$$
+
+with $\Delta W = \sqrt{\Delta t} R$, where $R$ is a random number drawn from any distribution with zero mean and unitary variance. This $\Delta W$ can be seen as the increment of a random walk:
+
+$$\Delta W = W(t+\Delta t) - W(t)$$
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=100mm]{img/pic22.jpg}
+\end{figure}
+
+Choosing which of the RW we want to sample is the process of choosing the seed for the random number generator: it converts the process from stochastic to deterministic. The $\sqrt{\Delta t}$ has dramatic consequences when the increment is of $f(x)$ instead of $x$. Let's say $y=y(x)$:
+
+$$\Delta y \ne \frac{\partial y}{\partial x} \Delta x$$
+
+in fact:
+
+$$\Delta y = y' \left [ A \Delta t + B \Delta W + 2AB \Delta t \Delta W \right ] + \frac{y''}{2} \left [ A^2 \Delta t^2 + B^2 \Delta W^2 + 2AB\Delta t \Delta W \right ] + \ldots=$$
+$$= y' A \Delta t + y' B \Delta W + \frac{y''}{2}B^2 \Delta W^2$$
+
+Obviously we can neglect $A^2 \Delta t^2$, we can neglect  $2y'AB\Delta t \Delta W$ and $2AB\Delta t \Delta W$ too, since $\Delta W \cdot \Delta t$ is negligible with respect to $\Delta t$. On the reason why to keep the second term we've already discussed. We now discuss why we need to keep into account the third term.
+
+$$\Delta W^2 = \Delta t R^2$$
+
+where $R$ is a random number drawn from a distribution with zero mean and unitary variance. Notice that $\sigma^2 = <R^2> - <R>^2 = <R^2> = 1$, since mean of $R$ is zero, we can just rewrite:
+
+$$<R^2> = \Delta t + \Delta t (R^2 -1)$$
+
+We analyze $(R^2 -1)$ and see that it has zero mean (since we found $<R^2> = 1$) and finite variance, $\Delta t (R^2 -1)$ is much smaller than $\Delta t$ and $\Delta W \propto \Delta t$ and it can not be neglected. At the end of this calculations we find:
+
+$$\Delta y = y' \left ( A \Delta t + B \Delta W \right ) + \frac{y''}{2} B^2 \Delta t$$
+$$d y = y' \left ( A dt + B dW \right ) + \frac{y''}{2} B^2 dt$$
+
+from which:
+
+$$d y = \left ( y'A + \frac{y''}{2} B^2 \right ) dt + y' B dW$$
+
+which is \textbf{It$\hat{o}$ Rule for chain derivatives}. We didn't expect $\frac{y''}{2} B^2 dt$, so we have to be careful when taking derivatives of stochastic equations. Notice that if y is purely stochastic ($A=0$), we have:
+
+$$dy = \frac{y''}{2} B^2 dt + y' BdW$$
+
+y could be on average increasing or decreasing, depending on its convexity (for application of this to finance: \textit{"Stochastic Differential Equations and Financial Mathematics - Thomas Onskog"}).
+
+\medskip
+
+If we have to implement an algorithm to solve a differential equation
+
+$$x(t + \Delta t) = A(x, t) \Delta t + x(t)$$
+
+we could ask if we should put $A(x+\Delta x, t+\Delta t)$ or $A(x(t), t)$. Actually it doesn't matter which choice we do, because the solution is the same for $\Delta t \to 0$, \textbf{this isn't true anymore if we have $dW$}.\newline
+Implementations of It$\hat{o}$ and Stratonovich formalisms are different: It$\hat{o}$ formalism modifies the chain rule, while Stratonovich doesn't, but in Stratonovich formalism we can have only implicit algorithms to solve stochastic differential equations, while in It$\hat{o}$'s we can implement a simple Euler method.
 
 \chapter{Assignments}
 
 \section{Assignment 1}
+
+Files for this assignment can be downloaded at: https://github.com/GiovanniBussi/simplemd
 
 \paragraph{Preliminary comments}
 
