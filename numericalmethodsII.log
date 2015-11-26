@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.3.3)  25 NOV 2015 11:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.3.3)  26 NOV 2015 20:43
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -543,14 +543,6 @@ File: lstlang1.sty 2014/03/04 1.5c listings language file
 File: lstmisc.sty 2014/03/04 1.5c (Carsten Heinz)
 )
 (./numericalmethodsII.aux)
-Runaway argument?
-{\contentsline {subsection}{\numberline {2.8.2}Andersen, Langevin The\ETC.
-./numericalmethodsII.tex:39: File ended while scanning use of \@writefile.
-<inserted text> 
-                \par 
-l.39 \begin{document}
-                     
-? 
 \openout1 = `numericalmethodsII.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
@@ -567,6 +559,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 39.
 LaTeX Font Info:    ... okay on input line 39.
 LaTeX Info: Redefining \it@ocap on input line 39.
 LaTeX Info: Redefining \it@ccap on input line 39.
+
 
 File italian.ldf warning: 
 italian.ldf    With OT1 encoding guillemets are poorly faked
@@ -696,7 +689,7 @@ issa.jpg>]
 
 ]
 Capitolo 1.
-<img/figure1.jpg, id=16, 1638.12pt x 919.435pt>
+<img/figure1.jpg, id=18, 1638.12pt x 919.435pt>
 File: img/figure1.jpg Graphic file (type jpg)
  <use img/figure1.jpg>
 Package pdftex.def Info: img/figure1.jpg used on input line 92.
@@ -711,13 +704,13 @@ File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 97.
 
-<img/figure2.jpg, id=24, 1638.12pt x 919.435pt>
+<img/figure2.jpg, id=25, 1638.12pt x 919.435pt>
 File: img/figure2.jpg Graphic file (type jpg)
  <use img/figure2.jpg>
 Package pdftex.def Info: img/figure2.jpg used on input line 104.
 (pdftex.def)             Requested size: 199.16928pt x 111.7865pt.
 
-<img/figure3.jpg, id=25, 1638.12pt x 919.435pt>
+<img/figure3.jpg, id=26, 1638.12pt x 919.435pt>
 File: img/figure3.jpg Graphic file (type jpg)
  <use img/figure3.jpg>
 Package pdftex.def Info: img/figure3.jpg used on input line 129.
@@ -961,22 +954,71 @@ File: img/pic22.jpg Graphic file (type jpg)
 <use img/pic22.jpg>
 Package pdftex.def Info: img/pic22.jpg used on input line 1555.
 (pdftex.def)             Requested size: 284.52756pt x 159.697pt.
- [44 <./img/pic22.jpg>] [45] [46]
+ [44 <./img/pic22.jpg>] [45]
+Overfull \hbox (26.82661pt too wide) detected at line 1603
+\OML/cmm/m/it/10 dx \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 Adt \OT1/cmr/m/n/10 + \O
+ML/cmm/m/it/10 BdW[]dW \OT1/cmr/m/n/10 = []\OML/cmm/m/it/10 R[]
+ []
+
+<img/pic23.jpg, id=198, 1638.12pt x 919.435pt>
+File: img/pic23.jpg Graphic file (type jpg)
+ <use img/pic23.jpg>
+Package pdftex.def Info: img/pic23.jpg used on input line 1619.
+(pdftex.def)             Requested size: 284.52756pt x 159.697pt.
+ [46 <./img/pic23.jpg>] <img/pic24.jpg, id=202, 1638.12pt x 919.435pt>
+File: img/pic24.jpg Graphic file (type jpg)
+ <use img/pic24.jpg>
+Package pdftex.def Info: img/pic24.jpg used on input line 1656.
+(pdftex.def)             Requested size: 284.52756pt x 159.697pt.
+
+[47 <./img/pic24.jpg>] <img/pic25.jpg, id=206, 1638.12pt x 919.435pt>
+File: img/pic25.jpg Graphic file (type jpg)
+
+<use img/pic25.jpg>
+Package pdftex.def Info: img/pic25.jpg used on input line 1679.
+(pdftex.def)             Requested size: 284.52756pt x 159.697pt.
+ [48 <./img/pic25.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 1721--1722
+
+ []
+
+<img/pic26.jpg, id=210, 1638.12pt x 919.435pt>
+File: img/pic26.jpg Graphic file (type jpg)
+ <use img/pic26.jpg>
+Package pdftex.def Info: img/pic26.jpg used on input line 1743.
+(pdftex.def)             Requested size: 284.52756pt x 159.697pt.
+ [49]
+[50 <./img/pic26.jpg>] <img/pic27.jpg, id=218, 1638.12pt x 919.435pt>
+File: img/pic27.jpg Graphic file (type jpg)
+
+<use img/pic27.jpg>
+Package pdftex.def Info: img/pic27.jpg used on input line 1786.
+(pdftex.def)             Requested size: 284.52756pt x 159.697pt.
+ <img/pic28.jpg, id=219, 1638.12pt x 919.435pt>
+File: img/pic28.jpg Graphic file (type jpg)
+
+<use img/pic28.jpg>
+Package pdftex.def Info: img/pic28.jpg used on input line 1802.
+(pdftex.def)             Requested size: 284.52756pt x 159.697pt.
+
+Underfull \vbox (badness 1377) has occurred while \output is active []
+
+ [51 <./img/pic27.jpg>] [52 <./img/pic28.jpg>]
 Capitolo 3.
 (/usr/local/texlive/2014/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2014/03/04 1.5c listings language file
 )
 (/usr/local/texlive/2014/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2014/03/04 1.5c listings language file
-) [47
+) [53
 
 ]
-[48] [49] [50] (./numericalmethodsII.aux) ) 
+[54] [55] [56] (./numericalmethodsII.aux) ) 
 Here is how much of TeX's memory you used:
- 13653 strings out of 493117
- 263839 string characters out of 6135434
- 414039 words of memory out of 5000000
- 16950 multiletter control sequences out of 15000+600000
+ 13683 strings out of 493117
+ 264319 string characters out of 6135434
+ 414347 words of memory out of 5000000
+ 16974 multiletter control sequences out of 15000+600000
  14218 words of font info for 53 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,19n,56p,10407b,1675s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1002,10 +1044,10 @@ fonts/cm/cmsy7.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfo
 nts/cm/cmti10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmti12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfont
 s/cm/cmtt8.pfb>
-Output written on numericalmethodsII.pdf (50 pages, 11968694 bytes).
+Output written on numericalmethodsII.pdf (56 pages, 14245723 bytes).
 PDF statistics:
- 283 PDF objects out of 1000 (max. 8388607)
- 176 compressed objects within 2 object streams
+ 308 PDF objects out of 1000 (max. 8388607)
+ 189 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 161 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 191 words of extra memory for PDF output out of 10000 (max. 10000000)
 

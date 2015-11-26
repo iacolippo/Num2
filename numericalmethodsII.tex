@@ -1572,7 +1572,7 @@ where $R$ is a random number drawn from a distribution with zero mean and unitar
 
 $$<R^2> = \Delta t + \Delta t (R^2 -1)$$
 
-We analyze $(R^2 -1)$ and see that it has zero mean (since we found $<R^2> = 1$) and finite variance, $\Delta t (R^2 -1)$ is much smaller than $\Delta t$ and $\Delta W \propto \Delta t$ and it can not be neglected. At the end of this calculations we find:
+We analyze $(R^2 -1)$ and see that it has zero mean (since we found $<R^2> = 1$) and finite variance,  so $\Delta t (R^2 -1)$ is much smaller than $\Delta t$ and $\Delta W \propto \Delta t$, it can not be neglected. At the end of this calculations we find:
 
 $$\Delta y = y' \left ( A \Delta t + B \Delta W \right ) + \frac{y''}{2} B^2 \Delta t$$
 $$d y = y' \left ( A dt + B dW \right ) + \frac{y''}{2} B^2 dt$$
@@ -1595,6 +1595,213 @@ $$x(t + \Delta t) = A(x, t) \Delta t + x(t)$$
 
 we could ask if we should put $A(x+\Delta x, t+\Delta t)$ or $A(x(t), t)$. Actually it doesn't matter which choice we do, because the solution is the same for $\Delta t \to 0$, \textbf{this isn't true anymore if we have $dW$}.\newline
 Implementations of It$\hat{o}$ and Stratonovich formalisms are different: It$\hat{o}$ formalism modifies the chain rule, while Stratonovich doesn't, but in Stratonovich formalism we can have only implicit algorithms to solve stochastic differential equations, while in It$\hat{o}$'s we can implement a simple Euler method.
+
+\medskip
+
+We write a general stochastic differential equation:
+
+$$dx = A dt + B dW \mbox{ where } dW= \sqrt{dt}R \mbox{ and R is a random number with zero mean and unitary variance}$$
+
+This equation is deterministic if $B=0$ and "purely stochastic" if $A=0$. Using It$\hat{o}$ formula we find:
+
+$$dy = y' A dt + y' B dW + \frac{y''}{2} B^2 dt$$
+
+where the last term is relevant only if $y'' \ne 0$, that is $y$ is a function of $x$ with non zero second derivative.
+
+\paragraph{Example - Langevin equation}
+
+We can write Langevin equation for velocity, with coefficients put to 1 and $x=p$:
+
+$$dx = -x dt + dW$$
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=100mm]{img/pic23.jpg}
+\end{figure}
+
+We can implement an algorithm to see the evolution of $x$ using:
+
+$$x = x +\left ( -x \Delta_t + \sqrt{\Delta_t} \cdot R \right )$$ 
+
+with a time step short enough and R drawn from a probability distribution with zero mean and unitary variance (such as a gaussian).\newline
+We now define:
+
+$$y = x^2 \rightarrow y' = 2x \mbox{ ; } y'' = 2$$
+
+so
+
+$$dy = -2x^2 dt + 2x dW + dt$$
+
+which we would like to write only in y. In order to do this we have to invert $y(x)$. This isn't always possible. In this case:
+
+$$x = \pm \sqrt{y}$$
+
+and
+
+$$dy = (1-2y)dt \pm \sqrt{y} dW$$
+
+The first term is simple since we have $x^2$, so it doesn't matter which sign we choose. We seem to be in trouble with the second term, actually both answers are right since dW is gaussian distributed with zero mean: $\pm$ just correspond to different series of noise, but there is a one to one correspondence between the two. We can arbitrarily choose the plus sign. So:
+
+$$dy = (1-2y)dt + \sqrt{y} dW$$
+
+This isn't always possible, for example if $\overrightarrow{x}$ is a vector and $y(\overrightarrow{x})$ is a scalar, the relation won't be surely invertible.\newline
+This relation tells us that y is pulled towards $\frac{1}{2}$ instead of zero, this is correct, since $x^2$ is proportional to the kinetic energy ($\frac{1}{2}k_B T=\frac{1}{2}$, since we put $k_B T = 1$). Notice that without the additional term from It$\hat{o}$'s rule, our result would be wrong. 
+
+\paragraph{Example - Geometric random walk}
+
+$$dx = dW$$
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=100mm]{img/pic24.jpg}
+\end{figure}
+
+$$y= e^{x} \rightarrow y'=y''=e^{x}$$
+
+$$dy = e^{x}dW+\frac{e^x}{2}dt \rightarrow dy = \left ( \frac{1}{2}dt + dW \right ) y$$
+
+It's clear from this equation that y will increase on average, since $ydW$ on average is zero, while $$\frac{y}{2}dt$$ is always greater than zero.
+
+\section{Fokker-Planck equation}
+
+We want to derive something equivalent to Liouville equation for systems evolving stochastically. We write the most general possible stochastic equation:
+
+$$dx = A dt + B dW$$
+
+and we choose $y= \delta(x-x_0)$ to "count the states". So:
+
+$$y= \delta(x-x_0)$$
+$$y'= \delta'(x-x_0)$$
+$$y''= \delta''(x-x_0)$$
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=100mm]{img/pic25.jpg}
+\end{figure}
+
+$$<y> = \int dx \delta(x-x_0)P(x) = P(x_0)$$
+
+measures probability density in $x_0$. We want to see how it changes with time:
+
+$$dy = \delta(x-x_0) A dt + \frac{B^2}{2}\delta''(x-x_0)dt + \delta'(x-x_0)BdW$$
+
+And we compute its average:
+
+$$<dy> = \int dx P(x) \left [ \delta'(x-x_0)Adt+\delta''(x-x_0)\frac{B^2}{2}dt + \delta'(x-x_0)BdW \right ]$$
+
+Trajectories from the same box don't necessarily move together, I should compute the average of random noise:
+
+$$<\delta'(x-x_0)BdW> = 0$$
+
+so:
+
+$$<dy> = \int dx P(x) \left [ \delta'(x-x_0)Adt+\delta''(x-x_0)\frac{B^2}{2}dt \right ]$$
+
+That is a deterministic equation.
+
+$$<dy> = \int dx P(x)\delta'(x-x_0)Adt + \int \delta''(x-x_0)\frac{B^2}{2}dt$$
+
+Now we make a crude approximation by not considering boundary effects. Let's assume extreme of integrations are $-\infty, +\infty$ (infinite domain) and $P(x) \to \mbox{ when } x \to \infty$ (P is normalized).\newline
+We compute these two integrals by part and use our boundary conditions:
+
+$$<dy> = -\int dx \delta(x-x_0) \frac{\partial}{\partial x} (P(x) A(x)) dt + \int dx \delta(x-x_0) \frac{\partial^2}{\partial x^2}\left ( P(x) \frac{B^2(x)}{2} \right ) dt$$
+
+computing integrals:
+
+$$<dy> = -\frac{\partial}{\partial x_0} \left ( P(x_0) A(x_0)\right ) dt + \frac{\partial^2}{\partial x_0^2} \left ( P(x_0) B^2(x_0) \right ) dt = dP(x_0)$$
+
+and we can restate (just changing the name of $x_0$ to $x$ since it's the same):
+
+$$dP(x) = -\frac{\partial}{\partial x} \left ( P(x) A(x)\right ) dt + \frac{\partial^2}{\partial x^2} \left ( P(x) B^2(x) \right ) dt$$
+
+This is not anymore stochastic, so we can use usual formalism in physics:
+
+$$\dot{P} = -\frac{\partial}{\partial x} \left ( P(x) A(x)\right ) + \frac{\partial^2}{\partial x^2} \left ( P(x) B^2(x) \right )$$
+
+that is the \textbf{Fokker-Planck equation}.\newline
+
+$$J = AP -\frac{1}{2} \frac{\partial}{\partial x^2} \left ( B^2(x) P(x) \right ) \rightarrow \dot{P} = - \frac{\partial J}{\partial x}$$
+
+Where $ -\frac{1}{2} \frac{\partial}{\partial x^2} \left ( B^2(x) P(x) \right )$ is an additional current coming from the stochastic noise.\newline
+We can define:
+
+$$\hat{L} = \frac{\partial}{\partial x} A - \frac{1}{2} \frac{\partial^2}{\partial x^2} B^2 \rightarrow \dot{\rho} = -\hat{L} \rho$$
+
+\textbf{Fokker-Planck equation is linear}, we can use Trotter splitting, it's a normal partial differential equation.
+Notice that if we put $B=0$ we recover continuity equation: $\dot{P} = -\nabla J$ and $J=AP$.
+
+\paragraph{Example - Random walk}
+
+$$dx=dW$$
+
+$$J = -\frac{1}{2}\frac{\partial}{\partial x} P \rightarrow \dot{p} = \frac{1}{2}\frac{\partial^2}{\partial x^2}P$$
+
+Whenever second derivative of P is negative, P decreases, while when it's positive, P increases. Distribution is flattened on the domain.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=100mm]{img/pic26.jpg}
+\end{figure}
+
+\paragraph{Example - Langevin equation}
+
+$$dx = -xdt +dW$$
+
+$$J = -xP -\frac{1}{2}\frac{\partial}{\partial x} P$$
+
+$$\dot{P} = \frac{\partial}{\partial x} (xP) + \frac{1}{2}\frac{\partial^2}{\partial x^2} P$$
+
+Term in dW tends to make the distribution flatter, but simultaneously there's another term which tries to squeeze distribution to the center.\newline
+We want to find which is the stationary distribution, that is we want to find P such that $\dot{P}=0$.
+
+$$\frac{\partial}{\partial x} (xP) + \frac{1}{2}\frac{\partial^2}{\partial x^2} P = 0$$
+
+We can say that if $J=0$ then $\dot{P} = 0$, but the converse isn't true! So if we find a solution for $J=0$ is ok, but if we don't find one for $J=0$, there could be one such that $J \ne 0$ but $\dot{P} = 0$. This is analogous as saying that detailed balance implies balance, but balance doesn't imply detailed balance.
+
+$$
+\begin{cases}
+\mbox{detailed balance } \leftrightarrow J = 0\\
+\mbox{balance } \leftrightarrow \dot{P} = 0
+\end{cases}
+$$
+
+So we look for a solution imposing $J=0$:
+
+$$J = -xP -\frac{1}{2}\frac{\partial}{\partial x}P = 0 \rightarrow \frac{\partial P}{\partial x} = -2xP \rightarrow P \propto e^{-x^2}$$
+
+which is the stationary distribution. If there's only one solution, system is ergodic.\newline
+For this 1D system in infinite domain, the only solution implies is with $J=0$, also $J=constant$ would be possible in principle, but then P could not be normalized. This means balance implies detailed balance.\newline
+In higher dimensionality we would have:
+
+$$d\overrightarrow{x} = \overrightarrow{A}dt + Bd\overrightarrow{W} \mbox{ where B is a matrix}$$
+
+so
+
+$$\dot{\overrightarrow{P}}= -\overrightarrow{\nabla} \overrightarrow{J} = 0$$
+
+and it's possible to have $\dot{\overrightarrow{P}}=0$ with $\overrightarrow{J} \ne 0$. For example:
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=100mm]{img/pic27.jpg}
+\end{figure}
+
+If we study the proper Langevin equation for velocity:
+
+$$dp = -\gamma p dt + \sqrt{2k_B T m} dW$$
+
+We can use the Fokker-Planck equation to derive an integrator for this. We can initialize the system in a known state $p_0$ and we know the final distribution, we want to know the behavior in between:
+
+$$P(p, t=0) = \delta(p-p_0)$$
+$$P(p, t \to \infty) \propto e^{-\frac{p^2}{2mk_B T}}$$
+
+Now I have a differential equation in P and two boundary conditions, I can solve the equation to find $P(p, t= \Delta t)$
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=100mm]{img/pic28.jpg}
+\end{figure}
+
 
 \chapter{Assignments}
 

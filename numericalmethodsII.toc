@@ -43,10 +43,15 @@
 \contentsline {subsection}{\numberline {2.8.1}Velocity rescaling, Berendsen Thermostat and Pseudocode}{40}
 \contentsline {subsection}{\numberline {2.8.2}Andersen, Langevin Thermostat and Pseudocode}{42}
 \contentsline {section}{\numberline {2.9}Stochastic differential equations}{44}
-\contentsline {chapter}{\numberline {3}Assignments}{47}
-\contentsline {section}{\numberline {3.1}Assignment 1}{47}
-\contentsline {paragraph}{Preliminary comments}{47}
-\contentsline {paragraph}{Energy conservation - drift and fluctuations}{48}
-\contentsline {paragraph}{Simulations at different temperatures - maximum allowed time-step}{49}
-\contentsline {paragraph}{Drift and fluctuations in relation to the size of the system}{50}
-\contentsline {paragraph}{Bonus level}{50}
+\contentsline {paragraph}{Example - Langevin equation}{46}
+\contentsline {paragraph}{Example - Geometric random walk}{47}
+\contentsline {section}{\numberline {2.10}Fokker-Planck equation}{48}
+\contentsline {paragraph}{Example - Random walk}{50}
+\contentsline {paragraph}{Example - Langevin equation}{50}
+\contentsline {chapter}{\numberline {3}Assignments}{53}
+\contentsline {section}{\numberline {3.1}Assignment 1}{53}
+\contentsline {paragraph}{Preliminary comments}{53}
+\contentsline {paragraph}{Energy conservation - drift and fluctuations}{54}
+\contentsline {paragraph}{Simulations at different temperatures - maximum allowed time-step}{55}
+\contentsline {paragraph}{Drift and fluctuations in relation to the size of the system}{56}
+\contentsline {paragraph}{Bonus level}{56}
