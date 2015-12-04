@@ -1541,7 +1541,7 @@ This algorithm can be used to implement Hybrid Monte Carlo. Another important th
 
 Langevin thermostat is a local thermostat: each particle's momentum is changed and there is no calculation of total kinetic energy.
 
-\section{Stochastic differential equations}
+\subsection{Stochastic differential equations}
 
 $$dx = A(x, t)dt + B(x, t)dW$$
 $$\Delta x = A(x, t) \Delta t + B(x, t)\Delta W$$
@@ -1662,7 +1662,7 @@ $$dy = e^{x}dW+\frac{e^x}{2}dt \rightarrow dy = \left ( \frac{1}{2}dt + dW \righ
 
 It's clear from this equation that y will increase on average, since $ydW$ on average is zero, while $$\frac{y}{2}dt$$ is always greater than zero.
 
-\section{Fokker-Planck equation}
+\subsection{Fokker-Planck equation}
 
 We want to derive something equivalent to Liouville equation for systems evolving stochastically. We write the most general possible stochastic equation:
 
@@ -1802,6 +1802,122 @@ Now I have a differential equation in P and two boundary conditions, I can solve
 \includegraphics[width=100mm]{img/pic28.jpg}
 \end{figure}
 
+Notice that if there's more than one solution to $\dot{P}=0$ the system is not ergodic, while if there's only one it is.
+
+\subsection{Overdamped Langevin equation}
+
+We want to design A and B such that we sample a precise distribution $\mathcal{P}(x) \propto e^{-\frac{U(x)}{k_B T}}$:
+
+$$A(x)P(x) = \frac{1}{2} \frac{\partial}{\partial x} \left [ B^2(x)P(x) \right ]$$
+
+$$A(x) = \frac{1}{2P(x)}\frac{\partial}{\partial x} \left [ B^2(x)P(x) \right ]$$
+
+If we impose $B^2(x) = 2D$, where D is an input parameter, so B is independent of x:
+
+$$A(x) = D\frac{\partial log P(x)}{\partial x} = - \frac{-D}{k_B T}\frac{\partial U(x)}{\partial x}$$
+
+We constructed coefficient such that stationary distribution is $\mathcal{P}(x) \propto e^{-\frac{U(x)}{k_B T}}$. We get:
+
+$$dx = - \frac{-D}{k_B T}\frac{\partial U(x)}{\partial x} dt + \sqrt{2D} dW$$
+
+which is called \textbf{overdamped Langevin equation}. We see that the partial derivative in x of U with minus sign is a force, in absence of this term, this equation describes a Brownian motion with diffusion coefficient D.\newline
+The first term is a systematic drift proportional to a force with a factor that tells how much and quickly the particle is reacting to it, while the second term is a thermal noise such that the final distribution is the one we want.
+
+\medskip
+
+If more generally we choose B as position dependent, for example making $D=D(x)$, then we get another equation:
+
+$$A = \frac{1}{P}\frac{\partial}{\partial x} \left [ DP \right ] = - \frac{D}{k_B T} \frac{\partial U}{\partial x} + \frac{\partial D}{\partial x}$$
+
+and so
+
+$$dx = -\frac{D}{k_B T}\frac{\partial U}{\partial x}dt + \frac{\partial D}{\partial x}dt + \sqrt{2D}dW \mbox{ with } D=D(x)$$
+
+If the diffusion coefficient is position dependent, the response is quick in some region and slow in others and this is reflected in the systematic term $\frac{\partial D}{\partial x}dt$.
+
+\paragraph{Example}
+
+If U is constant, P is flat (let's ignore for a moment the weird thing that P is not normalized), so there's no force and we move the particle in a way that P is uniform everywhere. If we only keep the last term the particle moves randomly, in some point faster than others, at the end more time will be spent in places where it's moving slowly. The systematic term that is added compensates this and corrects the behavior.
+
+The overdamped Langevin equation is very similar to the Langevin equation for p we derived:
+
+$$dp = -\gamma p dt + \sqrt{2m k_B T \gamma} dW$$
+
+We now want to understand why the equation we found is called overdamped. Let's take:
+
+$$\begin{cases}
+dp = -\gamma p dt + \sqrt{2mk_B T}dW + fdt\\
+dq = \frac{p}{m}dt
+\end{cases}$$
+
+We apply an integrator, so in pseudo-code language:
+
+$$\begin{cases}
+p = c_1 p + c_2 \sqrt{m k_B T} R_1(0, 1)\\
+q = q +\frac{p}{m}\Delta t + \frac{f}{2m}\Delta t^2\\
+p = c_1 p + c_2 \sqrt{m k_B T} R_2(0, 1)
+\end{cases}$$
+
+where $c_1 = e^{-\gamma \Delta t/2}$. If we let $\gamma \to \infty$, then $c_1 = 0$ and $c_2 = 1$, so we end up with:
+
+$$\begin{cases}
+p = \sqrt{m k_B T}R_1\\
+q = q + \frac{p}{m} \Delta t + \frac{f}{2m} \Delta t^2
+\end{cases}$$
+
+so $q = q + \sqrt{\frac{k_B T}{m}} \Delta t + \frac{f}{2m} \Delta t^2$. There's some analogy between this equation and our overdamped Langevin equation: there are a random term and a systematic shift.\newline
+If we impose $\frac{\Delta t^2}{2m} = \frac{D \Delta t}{k_B T}$ I get the same equation (we are cheating by changing the order of $\Delta t$, don't learn this!\newline
+The important thing is that in the limit $\gamma \to \infty$ and $m \to 0$, such that $\gamma m$ is constant, we get the overdamped Langevin equation from the Langevin equation.
+
+\subsection{Stochastic Velocity Rescaling}
+
+We have the system of equations:
+
+$$\begin{cases}
+dq = \frac{p}{m} dt\\
+dp = fdt - \gamma p dt + \sqrt{2 k_B T m \gamma} dW
+\end{cases}$$
+
+We notice that first equation and the first term of the second are Hamilton equations, we want to look at how much the energy changes, so we look only at the two last terms of the second equation. Since the dependence is only on p, only kinetic energy will change. We now look at the kinetic energy associated with every degree of freedom of the system:
+
+$$dp_i = -\gamma p_i dt + \sqrt{2 k_B T m_i \gamma}dW_i$$
+
+We remember that: $K_i = \frac{p_i^2}{2m_i}$, $\frac{\partial K}{\partial p_i}=\frac{p_i}{m_i}$ and $\frac{\partial^2 K_i}{\partial p_i \partial p_j} = \delta_{ij} \frac{1}{m_i}$, so:
+
+$$dK_i = - \frac{p_i}{m_i}(\gamma p_i dt) + \frac{p_i}{m}\sqrt{2 k_B T m_i \gamma} dW_i + k_B T \gamma dt = 2\gamma \left ( \frac{k_B T}{2} -K \right )dt + \sqrt{4 k_B T \gamma K_i}dW_i$$
+
+Now we sum over i, remember that sum of gaussian numbers is another gaussian number with variance that is the sum of the variances:
+
+$$dK= 2\gamma \left ( \frac{N_f k_B T}{2} - K \right )dt + \sqrt{4k_B T \gamma K}dW \mbox{ where } N_f \mbox{ is the number of degrees of freedom}$$
+
+We know $\frac{N_f k_B T}{2} = \bar{K}$ in velocity rescaling algorithm, then:
+
+$$dK = 2\gamma (\bar{K} -K)dt + \sqrt{4 k_B T \gamma K}dW$$
+
+This is very similar to Berendsen thermostat, in fact, if we define $\tau = \frac{1}{2\gamma}$:
+
+$$dK = \frac{\bar{K} - K}{\tau}dt + \sqrt{\frac{2 k_B T K}{\tau}}dW$$
+
+where the first term is exactly Berendsen thermostat but the second adds a stochastic contribution. This thermostat is global and the stochastic contribution is fundamental to return the correct distribution. This is known as \textbf{stochastic velocity rescaling algorithm} or \textbf{stochastic Berendsen}.
+
+\medskip
+
+Now if we have a stationary distribution $\mathcal{P}(K) \propto K^{\frac{N_f}{2}-1}e^{-\frac{K}{k_B T}}$ and we compute the current given by this thermostat on the space of K, it should be zero:
+
+$$A = \frac{\bar{K} -K}{\tau}, B = \sqrt{\frac{2k_B T K}{\tau}}$$
+
+$$J = AP - \frac{1}{2}\frac{\partial}{\partial K}B^2 P$$
+
+If we remember $\frac{\partial P}{\partial K} = \frac{P}{K} \left ( \frac{N_f}{2} -1 \right ) - \frac{P}{k_B T}$, then:
+
+$$J = P \left [ \frac{\bar{K} -K}{\tau} - \frac{k_B T }{\tau} - \frac{k_B T}{\tau}\left ( \frac{N_f}{2} -1 \right ) + \frac{k_B T}{\tau}\frac{1}{k_B T}K\right ] = P\left [ \frac{\bar{K}}{\tau} - \frac{k_B T N_f}{2\tau} \right ]$$
+
+but if we again recall $\bar{K} = \frac{N_f k_B T}{2}$, then it is $J=0$.
+
+\medskip
+
+Notice that this is not the only possible choice for A and B, but what's sure is that if we choose $B=0$, then $A=0$, so there's no thermostat. In fact \textbf{it's not possible to write a global thermostat without using stochastic terms or higher order differential equations that gives a correct result}.\newline
+The implementation of stochastic Berendsen can be the same as Berendsen thermostat with obvious changes in equations, but there are better ways.
 
 \chapter{Assignments}
 
@@ -2007,4 +2123,33 @@ Drift increases with the size of the system. Fluctuations increase with the size
 Download vmd and learn how to use it. You can see your crystal structure and its dynamics.\newline
 An interesting fact is that you can see periodic boundary conditions: a particle going outside the cube reappears at the other side of it.\newline
 Simulations at constant energy are not very physical actually, we have a lot of approximation such as finite size effects and so on.
+
+\section{Assignment 2}
+
+My Python code is in the directory \textit{assignment2} under the name \textit{mcmc.py} for the first three requests and \textit{mcmc3d.py} for the last one. In the same folder you can find some simple bash scripts to automate some computations and two plots: one of average alpha multiplied by delta in function of delta and one of the error in function of the size of subgroups in batch sampling.
+
+\paragraph{Behavior at different $\delta$, $q_0$ and $<\alpha>$}
+
+A lower $\delta$ means slower fluctuations, while a greater delta implies less correlation between successive points.\newline
+Choosing a $q_0$ very far from the correct distribution means that the first steps are to go to the correct distribution. When two trajectories starting from 0 and from, let's say, 100 meet, they become undistinguishable. If the trajectory is very long, the choice of the starting point doesn't matter, but if the trajectory isn't long enough, a short trajectory starting from a point far from the distribution can give wrong values of average, so we have to discard the initial equilibration. By the way this initial equilibration is well defined, so it's up to the user.\newline
+When we have more than one observable, each observable has different equilibration time and we have to check for each one. It?s important to know uncorrelation time. There are ways to know when points are completely independent, they're related to eigenvalues of transition matrix.\newline
+Another important phenomenon is that two trajectories after equilibration are very close to each other, because there?s the same seed of the random number generator, this is called \textbf{stochastic synchronization}: they reach a common point and then synchronize. There are two effects: one due to Lyapunov coefficient, that makes the trajectories diverge as they get cloes, while noise is following the same time series and this brings the two trajectories together. The effect is negligible when the system is complex enough.
+
+\medskip
+
+The average acceptance has a predictable behavior: it decreases with increasing delta as we discussed in theory.
+
+\textbf{Nerd stuff:} 
+\begin{lstlisting}[language=gnuplot]
+a line that starts with # is ignored by gnuplot
+\end{lstlisting}
+
+\paragraph{Average value of $q^2$}
+
+The right thing to do should be to compute the autocorrelation time of the function we're averaging (in this case $q^2$). Delta should be the size of the distribution to be optimized, but the \textbf{real only rule is to optimize autocorrelation time}: in this way we get independent samples as quick as possible. For each choice of delta, given the length of the simulation we can compute how much is the total error computing the error in each block, then taking the sum and plot in function of delta. This is somewhat correlated to \textit{block analysis}.
+
+\paragraph{3D harmonic oscillator, average distance}
+
+We find an average distance greater than $4$, which is the minimum of the potential energy. This is because the density of states is greater when the two particles are far from each other than when they are close, this shifts the peak to the right of the distribution. It's an \textbf{entropic force} that brings them away, since there are more states when they're far with respect to when they're close to each other. There's a gain of entropy in moving away, this is related to It$\hat{o}$ formula.
+
 \end{document}

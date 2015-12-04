@@ -42,16 +42,23 @@
 \contentsline {section}{\numberline {2.8}Thermostats}{40}
 \contentsline {subsection}{\numberline {2.8.1}Velocity rescaling, Berendsen Thermostat and Pseudocode}{40}
 \contentsline {subsection}{\numberline {2.8.2}Andersen, Langevin Thermostat and Pseudocode}{42}
-\contentsline {section}{\numberline {2.9}Stochastic differential equations}{44}
+\contentsline {subsection}{\numberline {2.8.3}Stochastic differential equations}{44}
 \contentsline {paragraph}{Example - Langevin equation}{46}
 \contentsline {paragraph}{Example - Geometric random walk}{47}
-\contentsline {section}{\numberline {2.10}Fokker-Planck equation}{48}
-\contentsline {paragraph}{Example - Random walk}{50}
+\contentsline {subsection}{\numberline {2.8.4}Fokker-Planck equation}{48}
+\contentsline {paragraph}{Example - Random walk}{49}
 \contentsline {paragraph}{Example - Langevin equation}{50}
-\contentsline {chapter}{\numberline {3}Assignments}{53}
-\contentsline {section}{\numberline {3.1}Assignment 1}{53}
-\contentsline {paragraph}{Preliminary comments}{53}
-\contentsline {paragraph}{Energy conservation - drift and fluctuations}{54}
-\contentsline {paragraph}{Simulations at different temperatures - maximum allowed time-step}{55}
-\contentsline {paragraph}{Drift and fluctuations in relation to the size of the system}{56}
-\contentsline {paragraph}{Bonus level}{56}
+\contentsline {subsection}{\numberline {2.8.5}Overdamped Langevin equation}{52}
+\contentsline {paragraph}{Example}{52}
+\contentsline {subsection}{\numberline {2.8.6}Stochastic Velocity Rescaling}{53}
+\contentsline {chapter}{\numberline {3}Assignments}{55}
+\contentsline {section}{\numberline {3.1}Assignment 1}{55}
+\contentsline {paragraph}{Preliminary comments}{55}
+\contentsline {paragraph}{Energy conservation - drift and fluctuations}{56}
+\contentsline {paragraph}{Simulations at different temperatures - maximum allowed time-step}{57}
+\contentsline {paragraph}{Drift and fluctuations in relation to the size of the system}{58}
+\contentsline {paragraph}{Bonus level}{58}
+\contentsline {section}{\numberline {3.2}Assignment 2}{58}
+\contentsline {paragraph}{Behavior at different $\delta $, $q_0$ and $<\alpha >$}{58}
+\contentsline {paragraph}{Average value of $q^2$}{59}
+\contentsline {paragraph}{3D harmonic oscillator, average distance}{59}
