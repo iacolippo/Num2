@@ -1396,7 +1396,7 @@ for (int istep = 0; istep < nsteps; istep++)	{
 	
 	(q, p) = velocity_verlet(q, p, deltat, natoms)
 	
-	scaling_factor = sqrt( (K(p) e^(-deltat/tau) + K_bar (1-e^(-deltat/tau)) )/( K(p) - K_actual ) ) //numerator is similar to a weighted average with two factors that add to one
+	scaling_factor = sqrt( (K(p) e^(-deltat/tau) + K_bar (1-e^(-deltat/tau)) )/K(p) //numerator is similar to a weighted average with two factors that add to one
 	
 	p = p*scaling_factor //all p are scaled
 }
@@ -1408,6 +1408,10 @@ This is a \textbf{global thermostat}: you don't need to measure each particle, b
 \medskip
 
 We can derive a differential equation corresponding to this thermostat:
+
+$$\overrightarrow{p}_{NEW} = \overrightarrow{p}_{OLD} \sqrt{\frac{Ke^{-\delta t/\tau} + \bar{K} (1-e^{-\delta t/\tau} }{K}}$$
+
+that in the limit of $\delta t \to 0$ is:
 
 $$\overrightarrow{p}_{NEW} = \overrightarrow{p}_{OLD} \sqrt{1- \frac{\Delta t}{\tau} + \frac{\Delta t}{\tau}\frac{\bar{K}}{K}} = \overrightarrow{p}_{OLD} + \frac{\Delta t}{2 \tau} \left( \frac{\bar{K}}{K} -1 \right ) \overrightarrow{p}_{OLD}$$
 
@@ -2151,5 +2155,74 @@ The right thing to do should be to compute the autocorrelation time of the funct
 \paragraph{3D harmonic oscillator, average distance}
 
 We find an average distance greater than $4$, which is the minimum of the potential energy. This is because the density of states is greater when the two particles are far from each other than when they are close, this shifts the peak to the right of the distribution. It's an \textbf{entropic force} that brings them away, since there are more states when they're far with respect to when they're close to each other. There's a gain of entropy in moving away, this is related to It$\hat{o}$ formula.
+
+\section{Assignment 3}
+
+\paragraph{Behavior of Potential Energy at different values of friction}
+
+sed is a stream editor that can substitute text with other text. The ampersand makes more simulation run at the same time. We generate some input and output files for different values of the friction with a usual bash script.
+
+\textbf{Nerd stuff:} 
+\begin{lstlisting}[language=bash]
+sed "s/FRICTION/$friction/" < in | ../cpp/simplemd.x &
+\end{lstlisting}
+
+Looking at the behavior of potential energy in function of time and friction we see that a higher friction leads to a faster equilibration. We can not increase friction arbitrarily because above a certain value the gain disappears, there's an optimal value. Higher friction may actually slow down equilibration. This is a good reason not to use Langevin thermostat: if you don't know the optimal value, the system may take a lot of time to equilibrate if gamma is too low or too high (in this case collisions with thermal bath become the bottleneck for diffusion).\newline
+A large gamma adds a further slowing down to the system which is useless. Optimal gamma is of the order of the typical autocorrelation time of the velocities when no thermal bath is present.
+
+\paragraph{Behavior of average potential energy and specific heat in function of T and N}
+
+We modify our bash script in order to have input and output files for different values of T.
+
+\medskip
+
+Computing the average of potential energy (and discarding initial equilibration), we notice that with larger T we get larger values of the potential energy, which is correct.\newline
+The specific heat is the variance of the potential energy divided by $k_B T^2$. Computing it we notice a peak in the specific heat at 1: there's a phase transition from solid to liquid.
+
+\medskip
+
+For what concerns specific heat in function of N, there's not very much to say: it's linearly proportional to N, since it's an extensive quantity.
+
+\paragraph{Behavior of average potential energy and specific heat from a configuration equilibrated at $T=3$}
+
+We notice that the plot energy is going to the same value as before for high T. For lower values of T there?s a difference: the system is not able to reach the same value of potential energy of the first simulations. For the lowest T is even going to lower energies.
+
+\medskip
+
+We have an hysteresis, because it takes time for the particle to rearrange and find the structure with energy low enough which is the crystal. Going from a disordered phase to an ordered phase, it is difficult to find the order, so there's a hysteresis.\newline
+We should cool the system at lower temperature than the real transition. This happens because of the finite time step. Real T is the average of the two: at this T I should have coexistence of the two phases: half of the time crystal and half of the time liquid, but the time required to see this is so long that we will never see.\newline
+If you take a bigger system, the value of the specific heat becomes larger and larger until it reaches an infinite slope. With a finite size there's a smoother transition.
+
+\medskip
+
+The global minimum for this system is not the perfect lattice, there is another structure with lower energy. It's a lattice with smaller boxes than the one we're feeding to the script, that fits better the Lennard-Jones parameter, so it has lower energy.
+
+\paragraph{Average of potential energy and specific heat with velocity rescaling}
+
+We modify the thermostat routine in simpleMD program with something like this:
+
+\begin{lstlisting}[language=C]
+if(istep%100==0) 	{
+//initialize kinetic energy
+double kk=0
+for (on natoms) {
+	for (on 3 components)	{
+		kk+=1/2mass*velocity^2;
+}
+	double alpha = sqrt(3/2 N k_B(=1) temperature/kk);
+	for (on 3 components)	{
+		kk+=1/2mass*velocity^2;
+}
+	}
+}
+\end{lstlisting}
+
+We see that the averages of the potential energy are very close to the ones we found with Langevin thermostat, while fluctuations ( specific heat) are notably different: the value of fluctuations is wrong by 20\%, this is a systematic error introduced by velocity rescaling.
+
+\medskip
+
+A curious fact is that in VMD we see the crystal moving: this happens because we didn't reset the velocity of the center of mass. Berendsen thermostat is not keeping energy partition correctly, the slowest oscillator will have higher energy with respect to the faster. When thermalizing globally two harmonic oscillators, the energy will be transferred to the slower oscillator. In our system the motion of the center of mass is infinitely slow because it has no restoring spring ($\sqrt{\frac{k}{m}}=0$), so it's a mode with zero frequency and it will slowly take all the energy into itself. This is an artifact in velocity rescaling, called \textbf{flying cube effect}: all the energy will go to the center of mass motion and in the end all the particles will move in the same direction with the same speed without relative motion.
+
+Using this kind of thermostat with a very short stride we can sample isokinetic ensemble, in which the potential energy is canonically distributed.
 
 \end{document}
