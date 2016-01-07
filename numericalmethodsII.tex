@@ -80,9 +80,9 @@ For reference you can look to ch. 6-7 of \textit{Statistical Mechanics}, Kerson,
 
 \section{Postulate of Classical Statistical Mechanics}
 
-Statistical mechanics concerns equilibrium properties of systems, it doesn't study how the system approaches the equilibrium nor if it can reach it, only what the situation at equilibrium is for a given system.\newline
-Statistical mechanics studies systems at thermodynamic equilibrium. In particular we assume to be in \textit{thermodynamic limit}: N, V are large enough that it makes sense to introduce $n = \frac{N}{V}$ and $N \rightarrow \infty, V \rightarrow \infty$ but $n$ is fixed and constant (volume and number of particles grow in proportion).\newline
-In the study of gas of N particles, we introduce 3N $q_I$ coordinates and 3N $p_i$ coordinates. Weak interactions are assumed, in order to let the system reach equilibrium, but apart from this, the motion is governed by Hamilton equations of motion.
+Statistical mechanics concerns equilibrium properties of systems, it doesn't study how the system approaches the equilibrium neither if it can reach it, only what is the situation at equilibrium for a given system.\newline
+Statistical mechanics studies systems at thermodynamic equilibrium. In particular we assume to be in \textit{thermodynamic limit}: N, V are large enough that it makes sense to introduce $n = \frac{N}{V}$ where $N \rightarrow \infty, V \rightarrow \infty$ but $n$ is fixed and constant (volume and number of particles grow in proportion).\newline
+In the study of gas of N particles, we introduce 3N $q_i$ coordinates and 3N $p_i$ coordinates. Weak interactions are assumed, in order to let the system reach equilibrium, but apart from this, the motion is governed by Hamilton equations of motion.
 
 $$\dot{q_i} = \frac{\partial H}{\partial p_i}$$
 $$\dot{p_i} = - \frac{\partial H}{\partial q_i}$$
@@ -92,7 +92,7 @@ $$\dot{p_i} = - \frac{\partial H}{\partial q_i}$$
 \includegraphics[width=100mm]{img/figure1.jpg}
 \end{figure}
 
-In the phase space, trajectories that intersect themselves are not allowed, since at the intersection I wouldn't know where to proceed and this would imply a non-deterministic behavior. Given this rule, I can have two kinds of trajectories:
+In the phase space, trajectories that intersect themselves are not allowed, since at the intersection we wouldn't know where to proceed and this would imply a non-deterministic behavior. Given this rule, we can have two kinds of trajectories:
 \begin{itemize}
 \item closed curves: they conserve the energy, but don't equilibrate, for example, harmonic oscillators.
 \item curves that fill out the space compatible with constraints on the system without self-intersecting or closing.
@@ -104,7 +104,7 @@ In the phase space, trajectories that intersect themselves are not allowed, sinc
 \includegraphics[width=70mm]{img/figure2.jpg}
 \end{figure}
 
-If we divide the phase space in small volumes $\Delta \Gamma$, we can build an histogram adding +1 every time the system visits a particular spot of the grid. At the end we will have an histogram of how many times that state has been visited by the system. The dimension of the volume gives the precision of momenta and coordinates: it is the level of fine graining.\newline
+If we divide the phase space in small volumes $\Delta \Gamma$, we can build an histogram adding +1 every time the system visits a particular spot of the grid. At the end we will have an histogram of how many times each state has been visited by the system. The dimension of the volume gives the precision of momenta and coordinates: it is the level of fine graining.\newline
 We want to know how much time the system spends in every bin:
 
 $$\lim_{T \to \infty} \frac{\Delta t_i(\Gamma_i)}{T} = \rho(\overrightarrow{q_i}, \overrightarrow{p_i}) \cdot \Delta \Gamma$$ 
@@ -112,13 +112,13 @@ $$\lim_{T \to \infty} \frac{\Delta t_i(\Gamma_i)}{T} = \rho(\overrightarrow{q_i}
 if the system is in equilibrium, where $\rho(\overrightarrow{q_i}, \overrightarrow{p_i})$ is a probability density.\newline
 Let's take $f(\overrightarrow{q}, \overrightarrow{p})$ as a generic observable:
 
-$$<f> = \lim_{T \to \infty} \frac{1}{T} \int_0^T dt f(\overrightarrow{q}(t), \overrightarrow{p}(t)) = \lim_{T \to \infty} \frac{1}{T}\sum_i \Delta t(q_i, p_i) \cdot f(q_i, p_i)$$
+$$\langle f \rangle = \lim_{T \to \infty} \frac{1}{T} \int_0^T dt f(\overrightarrow{q}(t), \overrightarrow{p}(t)) = \lim_{T \to \infty} \frac{1}{T}\sum_i \Delta t(q_i, p_i) \cdot f(q_i, p_i)$$
 
 since $\lim_{T \to \infty} \frac{1}{T} \Delta t(q_i, p_i) = \rho_i$:
 
-$$<f> = \sum_i \lim_{T \to \infty} \frac{\Delta t_i}{T} \cdot f(\overrightarrow{q_i}, \overrightarrow{p_i}) = \sum_i \rho(\overrightarrow{q_i}, \overrightarrow{p_i}) \cdot \Delta \Gamma \cdot f(\overrightarrow{q_i}, \overrightarrow{p_i}) = \int d\Gamma  f(\overrightarrow{q}, \overrightarrow{p})\cdot \rho(\overrightarrow{q}, \overrightarrow{p}))$$
+$$\langle f \rangle = \sum_i \lim_{T \to \infty} \frac{\Delta t_i}{T} \cdot f(\overrightarrow{q_i}, \overrightarrow{p_i}) = \sum_i \rho(\overrightarrow{q_i}, \overrightarrow{p_i}) \cdot \Delta \Gamma \cdot f(\overrightarrow{q_i}, \overrightarrow{p_i}) = \int d\Gamma  f(\overrightarrow{q}, \overrightarrow{p})\cdot \rho(\overrightarrow{q}, \overrightarrow{p}))$$
 
-The expected value of an observable can be computed as time average of a very long trajectory, or value of observable in any point of the phase space per a weight of time spent in that point.
+The expected value of an observable can be computed as time average of a very long trajectory, or as value of an observable in any point of the phase space multiplied by a weight that is the time spent in that point.
 
 \textbf{Ensemble}: a collection of mental copies of the system picked with an appropriate probability density function $\rho(\overrightarrow{q}, \overrightarrow{p})$
 
@@ -201,7 +201,7 @@ multiplying by $K_B$:
 
 $$S_1(\bar{E_1}) + S_2(E-\bar{E_1}) \le S_{1+2}(E) \le S_1(\bar{E_1}) + S_2(E-\bar{E_1}) + K_B ln(E) - K_B ln(\Delta E)$$
 
-Using \textit{squeeze theorem}, we take the limit for $N \to \infty$. Volume in phase space increases exponentially with N, this means that entropy grows linearly with N. The last two terms are negligible as $N \to \infty$ with respect to entropies, because $K_B ln(E) \to ln(N)$ and $K_B ln(\Delta E)$ is a constant independent of N. So:
+Using \textit{squeeze theorem}, we take the limit for $N \to \infty$. Volume in phase space increases exponentially with N, this means that entropy grows linearly with N. The last two terms are negligible as $N \to \infty$ with respect to entropies, because $K_B ln(E) \propto ln(N)$ and $K_B ln(\Delta E)$ is a constant independent of N. So:
 
 $$S_1(\bar{E_1}) + S_2(E-\bar{E_1}) \le S_{1+2}(E) \le S_1(\bar{E_1}) + S_2(E-\bar{E_1})$$
 
@@ -209,12 +209,12 @@ that implies:
 
 $$S_{1+2}(E) = S_1(\bar{E_1}) + S_2(E- \bar{E_1})$$
 
-which proves the extensive property of the entropy. Actually we have proven also that system one can take any value of energy, but choose to spend the most of the time in $\bar{E_1}$, that is the value of energy that maximizes the product $\Gamma_1(E_1)\Gamma_2(E_2)$.\newline
+which proves the extensive property of the entropy. Actually we have proven also that system 1 can take any value of energy, but choose to spend the most of the time in $\bar{E_1}$, that is the value of energy that maximizes the product $\Gamma_1(E_1)\Gamma_2(E_2)$.\newline
 This means that $\bar{E_1}$ is the value that makes the product stationary:
 
 $$\left [ \frac{\partial}{\partial E_1} \Gamma_1(E_1)\Gamma_2(E-E_1) \right ]_{\bar{E_1}}= 0$$
 
-making the derivative and using $\partial E_2 = - \partial E_1$:
+computing the derivative and using $\partial E_2 = - \partial E_1$:
 
 $$\left [ \Gamma_2(E_2) \frac{\partial}{\partial E_1} \Gamma_1(E_1) \right ]_{\bar{E_1}} - \left [ \Gamma_1 (E_1) \frac{\partial}{\partial E_2} \Gamma_2(E_2) \right ]_{\bar{E_1}} = 0$$
 
@@ -227,7 +227,7 @@ $$\left [ \frac{1}{\Gamma_1(E_1)} \frac{\partial}{\partial E_1} \Gamma_1(E_1) \r
 We now want to demonstrate that summing states on $0 \le H \le E$ or $E \le H \le H + \Delta$ is the same.\newline
 \textbf{Claim:}
 
-$$S_{\Delta}(E) = k_B ln (\int_{E \le H \le H + \Delta} d^{6N} \Gamma) =k_B ln (\int_{0 \le H \le E} d^{6N} \Gamma)$$
+$$S_{\Delta}(E) = k_B ln (\int_{E \le H \le E + \Delta} d^{6N} \Gamma) =k_B ln (\int_{0 \le H \le E} d^{6N} \Gamma)$$
 
 \textbf{Proof:} with analogous procedure as before
 
@@ -300,7 +300,7 @@ $$S \propto - \int d^{6N} \Gamma \rho(\overrightarrow{q}, \overrightarrow{p}) \c
 
 \subsection{Computing $\rho$}
 
-Given this definition of entropy, we have to maximize the functional $F\left [ \rho \right ]$, in order to find $\rho*$ that makes it stationary. To simplify notation: $d^{6N}\Gamma = d\Gamma$.
+Given this definition of entropy, we have to maximize the functional $F\left [ \rho \right ]$, in order to find $\rho^*$ that makes it stationary. To simplify notation: $d^{6N}\Gamma = d\Gamma$.
 
 $$F \left [ \rho \right ] = -k_B \int d\Gamma \left [ \rho ln(\rho) \right ]$$
 
@@ -362,7 +362,7 @@ then
 
 $$\rho^* = e^{\lambda -1 -\beta H} \propto e^{-\beta H}$$
 
-that is the result for the \textbf{canonical ensemble}. Actually we find:
+that is the result for the \textbf{canonical ensemble}. We find:
 
 $$\rho^* = \frac{e^{-\beta H}}{\int d\Gamma e^{-\beta H}}$$
 
@@ -408,7 +408,7 @@ and $c_v = \frac{\partial <H>}{\partial T}$ is the specific heat. So we've found
 
 $$<H^2> - <H>^2 = k_B T^2 \frac{\partial <H>}{\partial T}$$
 
-a relationship between an equilibrium property on the left and a something that depends on how energy of the system varies changing T. This is called \textbf{fluctuation and dissipation relationship}
+a relationship between an equilibrium property on the left and something that depends on how energy of the system varies changing T. This is called \textbf{fluctuation and dissipation relationship}
 
 We have
 
@@ -459,7 +459,7 @@ We have two systems, with the same density and the same temperature.
 
 $$\frac{N_1}{V_1} = \frac{N_2}{V_2}$$
 
-If I put them in contact and I don't allow flow of particles, nothing forbids me to look at the system $N_1 + N_2, V_1 + V2$, but I find $S_{TOT} - (S_1 + S_2) = (N_1 + N_2) ln(V_1 + V_2) - N_1 ln V_1 - N_2 ln V_2 \ne 0$ in general. This is known as \textbf{Gibbs paradox}. There's a problem related to the dependence of S from N. This will be solved by \textbf{correct Boltzmann counting}: whenever integrating over phase space, we should add a factor $\frac{1}{N!}$ (further information on paper by Robert H. Swendsen, \textit{Gibbs' Paradox and the Definition of Entropy}, Carnegie Mellon University).
+If we put them in contact and we don't allow flow of particles, nothing forbids us to look at the system $N_1 + N_2, V_1 + V2$, but we find $S_{TOT} - (S_1 + S_2) = (N_1 + N_2) ln(V_1 + V_2) - N_1 ln V_1 - N_2 ln V_2 \ne 0$ in general. This is known as \textbf{Gibbs paradox}. There's a problem related to the dependence of S from N. This will be solved by \textbf{correct Boltzmann counting}: whenever integrating over phase space, we should add a factor $\frac{1}{N!}$ (further discussion on paper by Robert H. Swendsen, \textit{Gibbs' Paradox and the Definition of Entropy}, Carnegie Mellon University).
 
 $$\int d\Gamma \rightarrow \frac{1}{N!}\int d\Gamma$$
 
@@ -831,7 +831,7 @@ for (i = 0; i < nsteps; i++)	{
 }
 \end{lstlisting}
 
-This algorithm is called \textbf{Velocity Verlet}. Acutally, it's like we are computing $\dot{x} = v(x)$ assuming $v(x) = v_1(x) + v_2(x)$ and then solving:
+This algorithm is called \textbf{Velocity Verlet}. It's like we are computing $\dot{x} = v(x)$ assuming $v(x) = v_1(x) + v_2(x)$ and then solving:
 
 $$\dot{x} = v_1(x) \mbox{ ignoring } v_2(x) \mbox{ for } \frac{\Delta t}{2}$$
 
@@ -988,7 +988,7 @@ A difference between the two algorithm is that in Velocity Verlet positions and 
 
 \section{Different types of ensembles and Properties of canonical ensemble}
 
-Often it is difficult to make an experiment on a single molecule for technical reasons, and it's simpler do an experiment on an ensemble, that gives an amplified signal to measure. If we have to compre numerical simulations and experiment what we do is actually comparing an average measure on an ensemble with a time average in the simulation.\newline
+Often it is difficult to make an experiment on a single molecule for technical reasons, and it's simpler do an experiment on an ensemble, that gives an amplified signal to measure. If we have to compare numerical simulations and experiment what we do is actually comparing an average measure on an ensemble with a time average in the simulation.\newline
 We have different types of ensembles, that are named by what remains constant: NVE (microcanonical), NVT (canonical), $\mu$VT (grand canonical) and then there are others like NPT, NPH or $\mu$VE. These are used according to what the experimentalist can control.
 
 \paragraph{Properties of canonical ensemble}
@@ -1317,7 +1317,7 @@ If we use an integrator as Velocity Verlet, we find approximate solutions: energ
 $$\frac{M_{A^*B^*}P_{B^*}}{M_{BA}P_A} = e^{-\beta \left ( \tilde{H}_B - \tilde{H}_A \right )} \ne 1$$
 
 If energy is almost conserved, we can say that this quantity is close to one and ignore the \textit{accept/reject step}. This leads to a more efficient but less accurate algorithm.\newline
-If we want to conserve energy, we can perform one step of Velocity Verlet, then change $v$ in order to have energy equal to the previous one: we have constant energy by construction. Nobody uses this: it's not more accurate, constant energy doesn't mean I'm sampling micro-canonical ensemble.\newline
+If we want to conserve energy, we can perform one step of Velocity Verlet, then change $v$ in order to have energy equal to the previous one: we have constant energy by construction. Nobody uses this: it's not more accurate, constant energy doesn't mean we're sampling canonical ensemble.\newline
 An inconsistency arises: we have gone from sampling a canonical ensemble, to sampling a micro-canonical one.
 
 \begin{figure}[H]
@@ -2224,5 +2224,75 @@ We see that the averages of the potential energy are very close to the ones we f
 A curious fact is that in VMD we see the crystal moving: this happens because we didn't reset the velocity of the center of mass. Berendsen thermostat is not keeping energy partition correctly, the slowest oscillator will have higher energy with respect to the faster. When thermalizing globally two harmonic oscillators, the energy will be transferred to the slower oscillator. In our system the motion of the center of mass is infinitely slow because it has no restoring spring ($\sqrt{\frac{k}{m}}=0$), so it's a mode with zero frequency and it will slowly take all the energy into itself. This is an artifact in velocity rescaling, called \textbf{flying cube effect}: all the energy will go to the center of mass motion and in the end all the particles will move in the same direction with the same speed without relative motion.
 
 Using this kind of thermostat with a very short stride we can sample isokinetic ensemble, in which the potential energy is canonically distributed.
+
+\section{Assignment 4}
+
+We created a script that integrates the equation:
+
+$$dx = -xdt+\sqrt{2}dW \mbox{ where } dW=\sqrt{dt}\cdot \mathcal{N}(0, 1)$$
+
+with Euler method.
+
+\paragraph{Behavior of average and standard deviation with time}
+
+We generated ten trajectories with different seeds and all trajectories started at $x_0=10.0$.
+The dynamics of the trajectories is evident: they start at 10 (initial condition), then the systematic term $-xdt$ brings them towards zero, when going close to zero the random term is of the same magnitude of the systematic term: the trajectories start to move around zero.
+
+We can compute the final expected value for average and variance: we write the Fokker-Planck equation and see which is the stationary distribution. In this case it's a gaussian.
+
+$$J=AP-\frac{1}{2}\frac{\partial}{\partial x}B^2 P = -xP -\frac{\partial}{\partial x}P$$
+
+There are no jumps in our dynamics, so enforcing detailed balance is the same as enforcing balance, we can directly put current to zero, without taking its derivative. So we find:
+
+$$xP = -\frac{\partial P}{\partial x} \rightarrow \frac{x^2}{2} = -logP + c \rightarrow P \propto e^{-\frac{x^2}{2}}$$
+
+That is a gaussian with unitary variance and zero average. The average is decaying with time as an exponential.
+
+$$<dx>=-<x>dt+0$$
+
+We define $\bar{x}=<x>$ and:
+
+$$\dot{\bar{x}} = -\bar{x} \rightarrow \bar{x}(t) = e^{-t} \bar{x}(0)$$
+
+We now want to find the functional form for the standard deviation. We define $y=x^2$ and by It$\hat{o}$ rule:
+
+$$dy = 2x(-xdt)+2x^2\sqrt{2}dW+\frac{1}{2} (\sqrt{2})^2 2dt = 2(1-x^2)dt+2\sqrt{2}\sqrt{x^2}dW=2(1-y)dt+2\sqrt{2y}dW$$
+
+So we see y is attracted to 1. We again define $\bar{y}=<y>$ and:
+
+$$\dot{\bar{y}}=2(1-\bar{y})$$
+
+$$\bar{y}(t) = 1+ (\bar{y}(0)-1)e^{-2t}$$
+
+We want
+
+$$z=<x^2> - <x>^2$$
+
+that is
+
+$$z = \bar{y} - \bar{x}^2 = 1+(\bar{y}(0)-1)e^{-2t} - \bar{x}(0)^2e^{-2t)}=1 + e^{-2t}(\bar{y}(0)-1-\bar{x}(0)^2)=1+e^{-2t}(z(0)-1)$$
+
+but $(\bar{y}(0) - \bar{x}(0)^2)$ is the initial value of the variance: $<x^2> - <x>^2$
+
+we initialized the trajectories in the same point so $z(0)=0$ and we take the square root to find the standard deviation:
+
+$z(t)=\sqrt{1-e^{-2x}}$
+
+So finally we have:
+
+$$\bar{x}(t) = e^{-t} \bar{x}(0)$$
+$$\sigma(t)=\sqrt{1-e^{-2x}}$$
+
+What we just did is to re-derive the equation for $p$ in the Andersen thermostat:
+
+$$p(t+\Delta t)= e^{-\gamma\delta t}p(t)+\sqrt{1-e^{-2\gamma\delta t}}\mathcal{N}(0, 1)$$
+
+\paragraph{Time increment of trajectories}
+
+We expect the velocities to be negative when x is large (to go down to zero), while when x is zero velocities should be zero. We find this behavior only with large $\tau$ (time interval for which we compute the increment).\newline
+With small $\tau$, we have very big velocities independent from positions, with large $\tau$ we have small velocities anti-correlated to the position.\newline
+In all the cases the velocity is not the same when x is 10 and x is zero, but with a shorter time step there?s an additional contribution which completely hides the systematic dependence.\newline
+When monitoring increment with very small time-step, the random term is much bigger than the systematic one in absolute value, but when summing contributions (larger $\tau$) all systematic terms sum up, while the random terms cancel out each others.\newline
+Another subtlety is that there?s a shift from the fit with a line $y=-x$ in the data, this is solved assigning velocities to the middle point of the stride.
 
 \end{document}

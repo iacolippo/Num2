@@ -67,3 +67,6 @@
 \contentsline {paragraph}{Behavior of average potential energy and specific heat in function of T and N}{61}
 \contentsline {paragraph}{Behavior of average potential energy and specific heat from a configuration equilibrated at $T=3$}{61}
 \contentsline {paragraph}{Average of potential energy and specific heat with velocity rescaling}{61}
+\contentsline {section}{\numberline {3.4}Assignment 4}{62}
+\contentsline {paragraph}{Behavior of average and standard deviation with time}{62}
+\contentsline {paragraph}{Time increment of trajectories}{63}
