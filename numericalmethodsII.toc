@@ -3,7 +3,7 @@
 \contentsline {chapter}{\numberline {1}Statistical Mechanics}{4}
 \contentsline {section}{\numberline {1.1}Postulate of Classical Statistical Mechanics}{4}
 \contentsline {paragraph}{Liouville's Theorem}{6}
-\contentsline {section}{\numberline {1.2}Microcanonical ensemble}{6}
+\contentsline {section}{\numberline {1.2}Microcanonical ensemble}{7}
 \contentsline {paragraph}{A second definition of entropy}{9}
 \contentsline {paragraph}{Laser - Different behavior of S and T}{10}
 \contentsline {paragraph}{Phase transitions}{11}
@@ -70,3 +70,4 @@
 \contentsline {section}{\numberline {3.4}Assignment 4}{62}
 \contentsline {paragraph}{Behavior of average and standard deviation with time}{62}
 \contentsline {paragraph}{Time increment of trajectories}{63}
+\contentsline {chapter}{\numberline {A}Volume of a hypersphere}{64}

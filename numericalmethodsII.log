@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.3.3)  7 JAN 2016 16:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.3.3)  9 FEB 2016 10:51
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -694,11 +694,15 @@ File: img/figure1.jpg Graphic file (type jpg)
  <use img/figure1.jpg>
 Package pdftex.def Info: img/figure1.jpg used on input line 92.
 (pdftex.def)             Requested size: 284.52756pt x 159.697pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
  [4
 
- <./img/figure1.jpg>]
+]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 97.
- (/usr/local/texlive/2014/texmf-dist/tex/latex/base/omscmr.fd
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
@@ -709,27 +713,24 @@ File: img/figure2.jpg Graphic file (type jpg)
  <use img/figure2.jpg>
 Package pdftex.def Info: img/figure2.jpg used on input line 104.
 (pdftex.def)             Requested size: 199.16928pt x 111.7865pt.
-
-<img/figure3.jpg, id=29, 1638.12pt x 919.435pt>
+ [5 <./img/figure1.jpg> <./img/figure2.jpg>]
+<img/figure3.jpg, id=35, 1638.12pt x 919.435pt>
 File: img/figure3.jpg Graphic file (type jpg)
  <use img/figure3.jpg>
 Package pdftex.def Info: img/figure3.jpg used on input line 129.
 (pdftex.def)             Requested size: 199.16928pt x 111.7865pt.
- [5 <./img/figure2.jpg>] [6 <./img/figure3.jpg>]
-<img/figure4.jpg, id=41, 1219.55624pt x 885.3075pt>
+ [6 <./img/figure3.jpg>] <img/figure4.jpg, id=41, 1219.55624pt x 885.3075pt>
 File: img/figure4.jpg Graphic file (type jpg)
- <use img/figure4.jpg>
+
+<use img/figure4.jpg>
 Package pdftex.def Info: img/figure4.jpg used on input line 173.
 (pdftex.def)             Requested size: 284.52756pt x 206.54782pt.
-
-<img/figure5.jpg, id=42, 1638.12pt x 919.435pt>
+ <img/figure5.jpg, id=42, 1638.12pt x 919.435pt>
 File: img/figure5.jpg Graphic file (type jpg)
- <use img/figure5.jpg>
+
+<use img/figure5.jpg>
 Package pdftex.def Info: img/figure5.jpg used on input line 189.
 (pdftex.def)             Requested size: 284.52756pt x 159.697pt.
-
-Underfull \vbox (badness 4859) has occurred while \output is active []
-
  [7 <./img/figure4.jpg>] [8 <./img/figure5.jpg>]
 <img/figure6.jpg, id=50, 1638.12pt x 919.435pt>
 File: img/figure6.jpg Graphic file (type jpg)
@@ -765,11 +766,11 @@ Overfull \hbox (9.16324pt too wide) detected at line 400
 [13] <img/figure9.jpg, id=71, 1638.12pt x 919.435pt>
 File: img/figure9.jpg Graphic file (type jpg)
  <use img/figure9.jpg>
-Package pdftex.def Info: img/figure9.jpg used on input line 427.
+Package pdftex.def Info: img/figure9.jpg used on input line 425.
 (pdftex.def)             Requested size: 284.52756pt x 159.697pt.
 
 [14 <./img/figure9.jpg>] [15]
-Overfull \hbox (4.20596pt too wide) detected at line 519
+Overfull \hbox (4.20596pt too wide) detected at line 517
 \OML/cmm/m/it/10 S \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 ^^@\OML/cmm/m/it/10 k[] [
 ] [] d\OT1/cmr/m/n/10 ^^@\OML/cmm/m/it/10 ^^Zln\OT1/cmr/m/n/10 (\OML/cmm/m/it/1
 0 ^^Z\OT1/cmr/m/n/10 ) = \OML/cmm/m/it/10 k[] [] [] d\OT1/cmr/m/n/10 ^^@\OML/cm
@@ -781,7 +782,7 @@ Capitolo 2.
 <img/pic1.jpg, id=87, 1638.12pt x 919.435pt>
 File: img/pic1.jpg Graphic file (type jpg)
  <use img/pic1.jpg>
-Package pdftex.def Info: img/pic1.jpg used on input line 652.
+Package pdftex.def Info: img/pic1.jpg used on input line 650.
 (pdftex.def)             Requested size: 284.52756pt x 159.697pt.
  [19
 
@@ -789,7 +790,7 @@ Package pdftex.def Info: img/pic1.jpg used on input line 652.
 <img/pic2.jpg, id=92, 1638.12pt x 919.435pt>
 File: img/pic2.jpg Graphic file (type jpg)
  <use img/pic2.jpg>
-Package pdftex.def Info: img/pic2.jpg used on input line 666.
+Package pdftex.def Info: img/pic2.jpg used on input line 664.
 (pdftex.def)             Requested size: 284.52756pt x 159.697pt.
  [20 <./img/pic1.jpg> <./img/pic2.jpg>] <img/pic3.jpg, id=96, 1638.12pt x 919.4
 35pt>
@@ -802,15 +803,15 @@ Package pdftex.def Info: img/pic3.jpg used on input line 707.
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <8> not available
 (Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 759.
  [22]
-Overfull \hbox (2.82393pt too wide) detected at line 797
+Overfull \hbox (10.60173pt too wide) detected at line 797
 \OML/cmm/m/it/10 e[]e[] \OT1/cmr/m/n/10 = (1 + \OML/cmm/m/it/10 ^^UA \OT1/cmr/m
 /n/10 + ([] + \OML/cmm/m/it/10 o\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ^^U[]\OT1/cmr
 /m/n/10 ))(1 + \OML/cmm/m/it/10 ^^UB \OT1/cmr/m/n/10 + ([] + \OML/cmm/m/it/10 o
 \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ^^U[]\OT1/cmr/m/n/10 )) = 1 + \OML/cmm/m/it/1
 0 ^^U\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 A \OT1/cmr/m/n/10 + \OML/cmm/m/it/10 B\O
-T1/cmr/m/n/10 ) + \OML/cmm/m/it/10 ^^U[]\OT1/cmr/m/n/10 ([][] + \OML/cmm/m/it/1
-0 AB\OT1/cmr/m/n/10 ) + \OML/cmm/m/it/10 o\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ^^U
-[]\OT1/cmr/m/n/10 )
+T1/cmr/m/n/10 ) + \OML/cmm/m/it/10 ^^U[]\OT1/cmr/m/n/10 ([] + [] + \OML/cmm/m/i
+t/10 AB\OT1/cmr/m/n/10 ) + \OML/cmm/m/it/10 o\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 
+^^U[]\OT1/cmr/m/n/10 )
  []
 
 [23] [24] [25] <img/pic4.jpg, id=116, 1638.12pt x 919.435pt>
@@ -1018,7 +1019,11 @@ File: lstlang1.sty 2014/03/04 1.5c listings language file
 (/usr/local/texlive/2014/texmf-dist/tex/latex/listings/lstlang2.sty
 File: lstlang2.sty 2014/03/04 1.5c listings language file
 ) [60]
-[61] [62] [63] (./numericalmethodsII.aux) ) 
+[61] [62] [63]
+Appendice A.
+[64
+
+] (./numericalmethodsII.aux) ) 
 Here is how much of TeX's memory you used:
  13883 strings out of 493117
  266794 string characters out of 6135434
@@ -1027,32 +1032,32 @@ Here is how much of TeX's memory you used:
  14218 words of font info for 53 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,19n,56p,10407b,1677s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2014/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2014/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2014/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2014/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2014/texmf-dist/fon
-ts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/local/texlive/2014/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmitt10.pfb></usr/local/texlive/2014/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2014/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2014/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2014/texmf-dist/font
-s/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2014/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2014/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmr7.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmr9.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmsy10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmsy5.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmsy7.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmti10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmti12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmtt8.pfb>
-Output written on numericalmethodsII.pdf (63 pages, 14273269 bytes).
+</usr/local/texlive/2014/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmex10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/publ
+ic/amsfonts/cmextra/cmex7.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmitt10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmr12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmr5.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr7.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmr9.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/c
+msy10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+sy5.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
+7.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10
+.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.
+pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pf
+b>
+Output written on numericalmethodsII.pdf (64 pages, 14276163 bytes).
 PDF statistics:
- 331 PDF objects out of 1000 (max. 8388607)
- 204 compressed objects within 3 object streams
+ 334 PDF objects out of 1000 (max. 8388607)
+ 206 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  191 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -82,7 +82,7 @@ For reference you can look to ch. 6-7 of \textit{Statistical Mechanics}, Kerson,
 
 Statistical mechanics concerns equilibrium properties of systems, it doesn't study how the system approaches the equilibrium neither if it can reach it, only what is the situation at equilibrium for a given system.\newline
 Statistical mechanics studies systems at thermodynamic equilibrium. In particular we assume to be in \textit{thermodynamic limit}: N, V are large enough that it makes sense to introduce $n = \frac{N}{V}$ where $N \rightarrow \infty, V \rightarrow \infty$ but $n$ is fixed and constant (volume and number of particles grow in proportion).\newline
-In the study of gas of N particles, we introduce 3N $q_i$ coordinates and 3N $p_i$ coordinates. Weak interactions are assumed, in order to let the system reach equilibrium, but apart from this, the motion is governed by Hamilton equations of motion.
+In the study of gas of N particles, we introduce 3N $q_i$ coordinates and 3N $p_i$ coordinates. Weak interactions are assumed, in order to let the system reach equilibrium: at equilibrium energy must be evenly distirbuted throughout the system, so that on average each particle has the same energy. Apart from this, the motion is governed by Hamilton equations of motion.
 
 $$\dot{q_i} = \frac{\partial H}{\partial p_i}$$
 $$\dot{p_i} = - \frac{\partial H}{\partial q_i}$$
@@ -408,9 +408,7 @@ and $c_v = \frac{\partial <H>}{\partial T}$ is the specific heat. So we've found
 
 $$<H^2> - <H>^2 = k_B T^2 \frac{\partial <H>}{\partial T}$$
 
-a relationship between an equilibrium property on the left and something that depends on how energy of the system varies changing T. This is called \textbf{fluctuation and dissipation relationship}
-
-We have
+a relationship between an equilibrium property on the left and something that depends on how energy of the system varies changing T. This is called \textbf{fluctuation and dissipation relationship}.
 
 $$\frac{\Delta E}{E} = \sqrt{\frac{<H^2> -<H>^2}{<H>^2}} \propto \sqrt{N/N^2} = \frac{1}{\sqrt{N}}$$
 
@@ -443,11 +441,11 @@ $$F = U - TS = \mbox{free energy}$$
 
 so $\mathcal{Z} = e^{-\beta F}$: the canonical partition function is related to the free energy of the system.
 
-$$\mathcal{Z} = N k_B T ln \left [ V (\frac{2\pi m}{\beta})^{3/2} \right] + \frac{3}{2} N k_B T$$
+$$\mathcal{Z} = V^N \left ( 2\pi \frac{m}{\beta} \right )^{\frac{3N}{2}}$$
 
-$$F = -\frac{1}{\beta} \left [ N ln V + \frac{3}{2} N ln(2\pi m) - \frac{3}{2} N ln \beta \right ]$$
+$$F = -\frac{1}{\beta}ln \mathcal{Z} =  -\frac{1}{\beta} \left [ N ln V + \frac{3}{2} N ln(2\pi m) - \frac{3}{2} N ln \beta \right ]$$
 
-If we did things in the right way, we should find $- \frac{\partial F}{\partial V} = \mbox{pressure} = p$, check:
+If we did things in the right way, we should find $- \frac{\partial F}{\partial V} = \mbox{pressure} = p$:
 
 $$- \frac{\partial F}{\partial V} = \frac{1}{\beta} \frac{N}{V} = \frac{N k_B T}{V} = p$$
 
@@ -494,7 +492,7 @@ $$S = -k_B \sum_N \int d\Gamma \rho_N ln \left ( \rho_N \right )$$
 
 In order to find $\rho$ of the grand canonical ensemble, we maximize S.
 
-$$\tilde{F} = - k_B \sum_N \int d\Gamma \rho_N \left [ ln\left ( \rho_N \right ) + \lambda + \beta H_n - \beta \mu n \right ]$$
+$$\tilde{F} = - k_B \sum_N \int d\Gamma \rho_N \left [ ln\left ( \rho_N \right ) + \lambda + \beta H_n - \beta \mu N \right ]$$
 
 We are adding a linear term in $\delta \rho$, so when we do the functional derivative and put it equal zero, we get:
 
@@ -524,7 +522,7 @@ $$S = \frac{\bar{E}}{T} - \frac{\mu \bar{N}}{T} - \frac{F}{T}$$
 
 multiplying by T both sides and reorganizing terms:
 
-$$\bar{F} = \bar{E} - \mu\bar{N} -TS$$
+$$F = \bar{E} - \mu\bar{N} -TS$$
 
 from this definition:
 
@@ -582,7 +580,7 @@ $$ \nu_1 X_1 + \nu_2 X_2 + \ldots \leftrightarrow \nu'_1 Y_1 + \nu'_2 Y_2 + \ldo
 where $\nu_i$ are called \textit{stoichiometric coefficients}, $X_i$ are \textit{volume concentrations}.\newline
 Free energy has to be as little as possible at equilibrium and there are little fluctuations of N, since it is a dynamic equilibrium, however these fluctuations can not be arbitrary.
 
-$$\partial F = \sum_i \frac{\partial F}{\partial N_i} \delta N_i = -\sum_i \mu_i \delta N_i = 0 \mbox{ at equilibrium}$$
+$$\delta F = \sum_i \frac{\partial F}{\partial N_i} \delta N_i = -\sum_i \mu_i \delta N_i = 0 \mbox{ at equilibrium}$$
 
 so:
 
@@ -597,7 +595,7 @@ If we take our first example:
 
 $$2 \mu_{H_2} + 1\mu_{O_2} = 2\mu_{H_2O}$$
 
-multiply both sides by $\beta$ and remember $\beta \mu = ln \left ( \left ( \frac{2\pi m}{\beta} \right )^{\frac{3}{2}} \frac{1}{V} \right )$:
+multiply both sides by $\beta$ and remember $\beta \mu = ln \left ( \left ( \frac{\beta}{2\pi m} \right )^{\frac{3}{2}} \frac{1}{V} \right )$:
 
 $$2 ln \left ( \left ( \frac{2\pi m_{H_2}}{\beta} \right )^{\frac{3}{2}} \frac{1}{V_{H_2}} \right ) + ln \left ( \left ( \frac{2\pi m_{O_2}}{\beta} \right )^{\frac{3}{2}} \frac{1}{V_{O_2}} \right ) = 2ln \left ( \left ( \frac{2\pi m_{H_2O}}{\beta} \right )^{\frac{3}{2}} \frac{1}{V_{H_2O}} \right )$$
 
@@ -690,6 +688,8 @@ $$\rho(t+\Delta t) = e^{-\Delta t \hat{L}} \rho(t)$$
 
 that tells how an ensemble of trajectories evolves with time. If we take the total derivative of $\rho (x, t)$, we find:
 
+
+
 \paragraph{Properties of trajectories}
 
 \begin{itemize}
@@ -739,7 +739,7 @@ $$q( -\Delta t) = q(t) - \dot{q}(t) \Delta t + \ddot{q} (t) \frac{(\Delta t)^2}{
 
 adding one another:
 
-$$q( +\Delta t)  + q( -\Delta t) = 2q(t) +\dot{q}(t)(\Delta t)^2 + o(\Delta t)^4$$
+$$q( +\Delta t)  + q( -\Delta t) = 2q(t) +\ddot{q}(t)(\Delta t)^2 + o(\Delta t)^4$$
 
 since the term of order 3 is canceled. Finally we get:
 
@@ -794,7 +794,7 @@ Now we know how to propagate them singularly, but not how to propagate both of t
 If $\left [ \hat{L_p}, \hat{L_q} \right ] \ne 0 $, $e^{-\Delta t (\hat{L_q})} e^{-\Delta t \hat{L_p}} \ne e^{-\Delta t \hat{L}}$ and this is the case, in fact they do not commute, so applying first $\hat{L_p}$ and then $\hat{L_q}$ is not the same as doing the inverse. We propose different expressions for $\lim_{\lambda \to 0} e^{\lambda(A+B)}  \ne e^{\lambda A} e^{\lambda B} \ne e^{\lambda B} e^{\lambda A}$.\newline
 For example doing Taylor expansion of our first proposal:
 
-$$e^{\lambda A} e^{\lambda B} = (1+\lambda A + (\frac{\lambda^2 A^2}{2} + o(\lambda^2))(1+\lambda B + (\frac{\lambda^2 B^2}{2} + o(\lambda^2)) = 1 + \lambda(A+B) + \lambda^2(\frac{A^2}{2} \frac{B^2}{2} +AB) + o(\lambda^3)$$
+$$e^{\lambda A} e^{\lambda B} = (1+\lambda A + (\frac{\lambda^2 A^2}{2} + o(\lambda^2))(1+\lambda B + (\frac{\lambda^2 B^2}{2} + o(\lambda^2)) = 1 + \lambda(A+B) + \lambda^2(\frac{A^2}{2} + \frac{B^2}{2} +AB) + o(\lambda^3)$$
 
 while
 
@@ -865,7 +865,7 @@ We can do this because we assumed that $K$ depends only on $p$ and $U$ only on $
 If we want a compact notation for this algorithm:
 
 $$\begin{cases}
-q(t + \Delta t) = q(t) + \frac{p(t)}{m} \Delta t + \frac{f(q)}{m}\Delta t + \frac{f(q)}{m} \frac{\Delta t^2}{2}\\
+q(t + \Delta t) = q(t) + \frac{p(t)}{m} \Delta t + \frac{f(q)}{m} \frac{\Delta t^2}{2}\\
 p(t+ \Delta t) = p(t) + \frac{f(q(t))\Delta t + f(q(t+\Delta t))\Delta t}{2}
 \end{cases}$$
 
@@ -976,7 +976,7 @@ for (i = 0; i < nsteps; i++)	{
 }
 \end{lstlisting}
 
-This is the algorithm obtained by using $e^A e^B$, but with a different interpretation: $p$ at first step is $p(t+\Delta r)$ instead of $p(t)$. If we compare Velocity Verlet and Leap frog, we have:
+This is the algorithm obtained by using $e^A e^B$, but with a different interpretation: $p$ at first step is $p(t+\frac{\Delta t}{2})$ instead of $p(t)$. If we compare Velocity Verlet and Leap frog, we have:
 
 $$q(t+\Delta t) = q(t) + \frac{p(t)}{m}\Delta t + \frac{f(t)}{2m}\Delta t^2$$
 
@@ -997,7 +997,7 @@ $$\rho (x) = \frac{e^{-\beta H(x)}}{\mathcal{Z}} \mbox{ with } \mathcal{Z} = \in
 
 $$<A> = \int dx P(x) A(x)$$
 
-$$\frac{\partial <A>}{\partial T} = -\frac{1}{k_B T^2} (-<HA> - <H><A>)$$
+$$\frac{\partial <A>}{\partial T} = -\frac{1}{k_B T^2} (-<HA> + <H><A>)$$
 
 where $<A>$ is to be considered $<A>_T$, A doesn't depend on T but the average of A does.
 
@@ -1014,7 +1014,7 @@ $$\frac{\partial <K>_T}{\partial T} = \frac{N_f k_B}{2}$$
 $$\frac{\partial <U>}{\partial T} = \frac{1}{k_B T^2} (<HU> - <H><U>) = \frac{1}{k_B T^2}(<U^2> -<U>^2) \mbox{ fluctuation of potential energy}$$
 
 To compute  $c_V$, you need to compute $\frac{\partial <K>}{\partial T}$ and $\frac{\partial <U>}{\partial T}$. To compute the first one, you just need to know how many atoms are there, the second one is more difficult, because it depends on position.\newline
-Notice that at constant T, $K \ne \frac{k_B T}{2}$, in fact it should be equal on average: $<K> \ne \frac{k_B T}{2}$.
+Notice that at constant T, $K \ne \frac{k_B T}{2}$, in fact it should be equal on average: $<K> = \frac{k_B T}{2}$.
 
 $$<K^2> - <K>^2 = k_B T^2 \frac{\partial <K>}{\partial T} = \frac{N_f k_B^2 T^2}{2} \mbox{ in units of $k_B T$: } \frac{N_f}{2}$$
 
@@ -1295,7 +1295,7 @@ for (int istep = 0; istep < nsteps; istep++)	{
 }
 \end{lstlisting}
 
-The a step of the inner loop is usually called a \textit{Monte Carlo Sweep}. In this case, the algorithm is not time reversible, because I know the order of the particles moving: if I see particle 10 moving before particle 9, I know the time is reversed. This breaks detailed balance, but it's not an issue, since balance is still satisfied.
+The step of the inner loop is usually called a \textit{Monte Carlo Sweep}. In this case, the algorithm is not time reversible, because I know the order of the particles moving: if I see particle 10 moving before particle 9, I know the time is reversed. This breaks detailed balance, but it's not an issue, since balance is still satisfied.
 
 \subsection{Hybrid Monte Carlo}
 
@@ -1381,7 +1381,7 @@ $$dK = \frac{\frac{3}{2}N k_B T - K}{\tau} dt \rightarrow dK = (\bar{K} - K) \fr
 
 $\tau$ is an input parameter that gives the timescale of relaxation: it gives the intensity of the thermostat. If $\tau =1$ and $dt = 10^{-3}$, in $10^3$ steps kinetic energy will be relaxed.
 
-$$K(t+\Delta t) = \bar{K} + (k - \bar{K})e^{-\frac{\Delta t}{\tau}} = K(t) e^{-\frac{\Delta t}{\tau}} + \bar{K}\left ( 1- e^{-\frac{\Delta t}{\tau}} \right )$$
+$$K(t+\Delta t) = \bar{K} + (K - \bar{K})e^{-\frac{\Delta t}{\tau}} = K(t) e^{-\frac{\Delta t}{\tau}} + \bar{K}\left ( 1- e^{-\frac{\Delta t}{\tau}} \right )$$
 
 if $\tau=0$, $K_{new} = \bar{K}$, new kinetic energy is the target one, while if $\tau \to \infty$, $K_{new}=K_{old}$ since there is no thermostat acting (it's like rescaling with infinite period, it never happens). We should notice that K is changing also because we're integrating the equations of motion, but we're just combining the effect of the equation (it's something similar to Trotter splitting). This is called \textbf{Berendsen Thermostat}.
 
@@ -1495,7 +1495,7 @@ $$\Delta p = -\gamma_p p \Delta t - \sqrt{2 m_i k_B T \gamma} \sqrt{\Delta t} R$
 
 This is a stochastic differential equation and it's the \textbf{Langevin equation}. Using \textbf{It$\hat{o}$ formalism} (which we will use from now on):
 
-$$dp = -\gamma p \Delta t + \sqrt{2 m k_B T \gamma} dW \mbox{ where } dW =  \sqrt{\Delta t} R$$
+$$dp = -\gamma p dt + \sqrt{2 m k_B T \gamma} dW \mbox{ where } dW =  \sqrt{\Delta t} R$$
 
 using \textbf{Stratonovich formalism} we would write:
 
@@ -1512,7 +1512,7 @@ $$\Delta p = A (\Delta t + \Delta t) + \ldots = 2A\Delta t + \ldots $$
 
 for the first part, so the first term grows linearly with $\Delta t$ as I expected, for the second one, one would say:
 
-$$\sqrt{\Delta t} + \sqrt{\Delta t} = \sqrt{2\Delta t} \ne \sqrt{2\Delta t}$$
+$$\sqrt{\Delta t} + \sqrt{\Delta t} = 2\sqrt{\Delta t} \ne \sqrt{2\Delta t}$$
 
 but THIS IS A WRONG REASONING! The correct way is:
 
@@ -2294,5 +2294,41 @@ With small $\tau$, we have very big velocities independent from positions, with 
 In all the cases the velocity is not the same when x is 10 and x is zero, but with a shorter time step there?s an additional contribution which completely hides the systematic dependence.\newline
 When monitoring increment with very small time-step, the random term is much bigger than the systematic one in absolute value, but when summing contributions (larger $\tau$) all systematic terms sum up, while the random terms cancel out each others.\newline
 Another subtlety is that there?s a shift from the fit with a line $y=-x$ in the data, this is solved assigning velocities to the middle point of the stride.
+
+\appendix
+\chapter{Volume of a hypersphere}
+
+The volume of a n-dimensional sphere is the integral from 0 to R of the (n-1)-dimensional surface.
+
+$$V_n(R) = \int_{0}^{R} S_{n-1}(r)dr = C_n R^n$$
+
+where the last equality comes from dimensional analysis. From this relation:
+
+$$S_{n-1}(r) = \frac{dV_n(r)}{dr} = n C_n R^{n-1}$$
+
+The volume of a n-dimensional sphere is the n-dimensional integral over the area $x_1 + \ldots +x_n \le R^2$:
+
+$$\int _{x_1 + \ldots +x_n \le R^2} \ldots \int dx_1 \ldots dx_n = nC_n \int{0}^{R} r^{n-1}dr$$
+
+where in the last equality we used the first two equations we wrote.\newline
+The left hand side can be computed in hyperspherical coordinates. We see that
+
+$$n C_n =\int \ldots \int \Omega_{n-1}$$
+
+In order to compute the coefficient $C_n$ we use a little trick. We consider the function
+
+$$f(x_1, \ldots, x_n) = e^{-(x_1+\ldots+x_n)^2}=e^{-r^2}$$
+
+We can integrate it in cartesian or hyperspherical coordinates:
+
+$$\int_{-\infty}^{+\infty} dx_1 \ldots \int dx_n e^{-(x_1+\ldots+x_n)^2} = \int_{0}^{+\infty}r^{n-1}dr \int d\Omega_{n-1} e^{-r^2} = n C_n \int_{0}^{+\infty} r^{n-1} e^{-r^2}$$
+
+The left hand side is $\pi^{n/2}$, the right hand side is $n C_n \frac{1}{2} \Gamma(\frac{n}{2})$, so:
+
+$$C_n = \frac{\pi^{n/2}}{\Gamma(1+n/2)}$$
+
+then 
+
+$$V_n(r) = \frac{\pi^{n/2}}{\Gamma(1+n/2)} r^n$$
 
 \end{document}
