@@ -254,7 +254,7 @@ We now derive the explicit expression of $S(E)$ from the second definition:
 
 $$S(E) = k_B ln(\int_{0 \le H \le E}d^{6N}\Gamma) = k_B ln \left [ \int d^{3N}q \int_{0 \le \sum_i |p_i|^2 \le 2mE} d^{3N}p \right ] = k_B ln \left [ V^N (2mE)^{3N/2} \cdot c_{3N} \right ]$$
 
-where $c_{3N} = \frac{3N}{2} ln\pi - \frac{3N}{2} ln \frac{3N}{2} + \frac{3N}{2} + \mbox{higher order terms}$.\newline 
+where $lnc_{3N} = \frac{3N}{2} ln\pi - \frac{3N}{2} ln \frac{3N}{2} + \frac{3N}{2} + \mbox{higher order terms}$.\newline 
 Taking the partial derivative in energy:
 
 $$\frac{\partial S(E)}{\partial E} = \frac{3}{2} N k_B E^{-1}$$
@@ -1023,7 +1023,7 @@ $$<K^2> - <K>^2 = k_B T^2 \frac{\partial <K>}{\partial T} = \frac{N_f k_B^2 T^2}
 \includegraphics[width=100mm]{img/pic10.jpg}
 \end{figure}
 
-$$\sqrt{\frac{<K^2> - <K>^2}{<K>}} = \sqrt{\frac{2}{N_f}}$$
+$$\sqrt{\frac{<K^2> - <K>^2}{<K>^2}} = \sqrt{\frac{2}{N_f}}$$
 
 many degrees of freedom mean a more peaked distribution: $$<K> \propto N \mbox{, } \sigma(K) \propto \sqrt{N}$$.
 
@@ -1455,7 +1455,7 @@ for (int istep = 0; istep < nsteps; istep++)	{
 \end{lstlisting}
 
 This thermostat is local: at every step, you affect each of the particles indipendently of the others. It's a \textbf{local thermostat}.
-This algorithm is disliked because there are steps different from others.We can play a trick similar to the one used before:ù
+This algorithm is disliked because there are steps different from others.We can play a trick similar to the one used before:Ã¹
 
 $$p_{NEW} = c_1 p_{OLD} + c_2 \sqrt{m_i k_B T} R$$
 
