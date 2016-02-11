@@ -37,7 +37,7 @@ q1 = np.array([0.0, -2.0, 0.0])
 q2 = np.array([0.0, 2.0, 0.0])
 
 delta = 0.1
-nsteps = 10000000
+nsteps = 1000000
 alpha = 0
 U0 = pot_energy(q1, q2)
 
