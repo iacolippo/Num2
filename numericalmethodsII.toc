@@ -1,73 +1,73 @@
 \select@language {italian}
 \select@language {italian}
-\contentsline {chapter}{\numberline {1}Statistical Mechanics}{4}
-\contentsline {section}{\numberline {1.1}Postulate of Classical Statistical Mechanics}{4}
-\contentsline {paragraph}{Liouville's Theorem}{6}
-\contentsline {section}{\numberline {1.2}Microcanonical ensemble}{7}
-\contentsline {paragraph}{A second definition of entropy}{9}
-\contentsline {paragraph}{Laser - Different behavior of S and T}{10}
-\contentsline {paragraph}{Phase transitions}{11}
-\contentsline {paragraph}{Computing observables}{11}
-\contentsline {subsection}{\numberline {1.2.1}Computing $\rho $}{11}
-\contentsline {section}{\numberline {1.3}Canonical Ensemble}{12}
-\contentsline {subsection}{\numberline {1.3.1}Computing $\rho $}{12}
-\contentsline {paragraph}{Physical meaning of $\beta $}{13}
-\contentsline {subsection}{\numberline {1.3.2}Fluctuation and dissipation relationship}{13}
-\contentsline {subsection}{\numberline {1.3.3}Helmholtz Free Energy}{14}
-\contentsline {paragraph}{Disturbing fact}{15}
-\contentsline {section}{\numberline {1.4}Grand canonical ensemble}{15}
-\contentsline {subsection}{\numberline {1.4.1}Ideal gas}{17}
-\contentsline {subsection}{\numberline {1.4.2}Derivation of law of mass action}{17}
-\contentsline {chapter}{\numberline {2}Molecular Dynamics}{19}
-\contentsline {section}{\numberline {2.1}Hamilton Formalism}{19}
-\contentsline {paragraph}{Harmonic Oscillator}{20}
-\contentsline {section}{\numberline {2.2}Liouville Formalism}{20}
-\contentsline {paragraph}{Properties of trajectories}{21}
-\contentsline {section}{\numberline {2.3}Verlet Algorithm}{22}
-\contentsline {subsection}{\numberline {2.3.1}Pseudocode}{23}
-\contentsline {section}{\numberline {2.4}Velocity Verlet Algorithm}{23}
-\contentsline {paragraph}{Best choice: Trotter splitting}{24}
-\contentsline {subsection}{\numberline {2.4.1}Pseudocode}{24}
-\contentsline {paragraph}{Example: harmonic oscillator}{25}
-\contentsline {section}{\numberline {2.5}Leap frog}{28}
-\contentsline {subsection}{\numberline {2.5.1}Pseudocode}{28}
-\contentsline {section}{\numberline {2.6}Different types of ensembles and Properties of canonical ensemble}{29}
-\contentsline {paragraph}{Properties of canonical ensemble}{29}
-\contentsline {section}{\numberline {2.7}Monte Carlo Method}{32}
-\contentsline {subsection}{\numberline {2.7.1}Markov Chain Monte Carlo}{32}
-\contentsline {paragraph}{Examples: two and three states systems}{33}
-\contentsline {subsection}{\numberline {2.7.2}Metropolis algorithm and Pseudocode}{36}
-\contentsline {subsubsection}{Grand Canonical Monte Carlo}{38}
-\contentsline {subsection}{\numberline {2.7.3}Hybrid Monte Carlo}{39}
-\contentsline {section}{\numberline {2.8}Thermostats}{41}
-\contentsline {subsection}{\numberline {2.8.1}Velocity rescaling, Berendsen Thermostat and Pseudocode}{41}
-\contentsline {subsection}{\numberline {2.8.2}Andersen, Langevin Thermostat and Pseudocode}{43}
-\contentsline {subsection}{\numberline {2.8.3}Stochastic differential equations}{45}
-\contentsline {paragraph}{Example - Langevin equation}{47}
-\contentsline {paragraph}{Example - Geometric random walk}{48}
-\contentsline {subsection}{\numberline {2.8.4}Fokker-Planck equation}{49}
-\contentsline {paragraph}{Example - Random walk}{50}
-\contentsline {paragraph}{Example - Langevin equation}{51}
-\contentsline {subsection}{\numberline {2.8.5}Overdamped Langevin equation}{53}
-\contentsline {paragraph}{Example}{53}
-\contentsline {subsection}{\numberline {2.8.6}Stochastic Velocity Rescaling}{54}
-\contentsline {chapter}{\numberline {3}Assignments}{56}
-\contentsline {section}{\numberline {3.1}Assignment 1}{56}
-\contentsline {paragraph}{Preliminary comments}{56}
-\contentsline {paragraph}{Energy conservation - drift and fluctuations}{57}
-\contentsline {paragraph}{Simulations at different temperatures - maximum allowed time-step}{58}
-\contentsline {paragraph}{Drift and fluctuations in relation to the size of the system}{59}
-\contentsline {paragraph}{Bonus level}{59}
-\contentsline {section}{\numberline {3.2}Assignment 2}{59}
-\contentsline {paragraph}{Behavior at different $\delta $, $q_0$ and $<\alpha >$}{59}
-\contentsline {paragraph}{Average value of $q^2$}{60}
-\contentsline {paragraph}{3D harmonic oscillator, average distance}{60}
-\contentsline {section}{\numberline {3.3}Assignment 3}{60}
-\contentsline {paragraph}{Behavior of Potential Energy at different values of friction}{60}
-\contentsline {paragraph}{Behavior of average potential energy and specific heat in function of T and N}{61}
-\contentsline {paragraph}{Behavior of average potential energy and specific heat from a configuration equilibrated at $T=3$}{61}
-\contentsline {paragraph}{Average of potential energy and specific heat with velocity rescaling}{61}
-\contentsline {section}{\numberline {3.4}Assignment 4}{62}
-\contentsline {paragraph}{Behavior of average and standard deviation with time}{62}
-\contentsline {paragraph}{Time increment of trajectories}{63}
-\contentsline {chapter}{\numberline {A}Volume of a hypersphere}{64}
+\contentsline {chapter}{\numberline {1}Statistical Mechanics}{3}
+\contentsline {section}{\numberline {1.1}Postulate of Classical Statistical Mechanics}{3}
+\contentsline {paragraph}{Liouville's Theorem}{5}
+\contentsline {section}{\numberline {1.2}Microcanonical ensemble}{6}
+\contentsline {paragraph}{A second definition of entropy}{8}
+\contentsline {paragraph}{Laser - Different behavior of S and T}{9}
+\contentsline {paragraph}{Phase transitions}{10}
+\contentsline {paragraph}{Computing observables}{10}
+\contentsline {subsection}{\numberline {1.2.1}Computing $\rho $}{10}
+\contentsline {section}{\numberline {1.3}Canonical Ensemble}{11}
+\contentsline {subsection}{\numberline {1.3.1}Computing $\rho $}{11}
+\contentsline {paragraph}{Physical meaning of $\beta $}{12}
+\contentsline {subsection}{\numberline {1.3.2}Fluctuation and dissipation relationship}{12}
+\contentsline {subsection}{\numberline {1.3.3}Helmholtz Free Energy}{13}
+\contentsline {paragraph}{Disturbing fact}{14}
+\contentsline {section}{\numberline {1.4}Grand canonical ensemble}{14}
+\contentsline {subsection}{\numberline {1.4.1}Ideal gas}{16}
+\contentsline {subsection}{\numberline {1.4.2}Derivation of law of mass action}{16}
+\contentsline {chapter}{\numberline {2}Molecular Dynamics}{18}
+\contentsline {section}{\numberline {2.1}Hamilton Formalism}{18}
+\contentsline {paragraph}{Harmonic Oscillator}{19}
+\contentsline {section}{\numberline {2.2}Liouville Formalism}{19}
+\contentsline {paragraph}{Properties of trajectories}{20}
+\contentsline {section}{\numberline {2.3}Verlet Algorithm}{21}
+\contentsline {subsection}{\numberline {2.3.1}Pseudocode}{22}
+\contentsline {section}{\numberline {2.4}Velocity Verlet Algorithm}{22}
+\contentsline {paragraph}{Best choice: Trotter splitting}{23}
+\contentsline {subsection}{\numberline {2.4.1}Pseudocode}{23}
+\contentsline {paragraph}{Example: harmonic oscillator}{24}
+\contentsline {section}{\numberline {2.5}Leap frog}{27}
+\contentsline {subsection}{\numberline {2.5.1}Pseudocode}{27}
+\contentsline {section}{\numberline {2.6}Different types of ensembles and Properties of canonical ensemble}{28}
+\contentsline {paragraph}{Properties of canonical ensemble}{28}
+\contentsline {section}{\numberline {2.7}Monte Carlo Method}{31}
+\contentsline {subsection}{\numberline {2.7.1}Markov Chain Monte Carlo}{31}
+\contentsline {paragraph}{Examples: two and three states systems}{32}
+\contentsline {subsection}{\numberline {2.7.2}Metropolis algorithm and Pseudocode}{35}
+\contentsline {subsubsection}{Grand Canonical Monte Carlo}{37}
+\contentsline {subsection}{\numberline {2.7.3}Hybrid Monte Carlo}{38}
+\contentsline {section}{\numberline {2.8}Thermostats}{40}
+\contentsline {subsection}{\numberline {2.8.1}Velocity rescaling, Berendsen Thermostat and Pseudocode}{40}
+\contentsline {subsection}{\numberline {2.8.2}Andersen, Langevin Thermostat and Pseudocode}{42}
+\contentsline {subsection}{\numberline {2.8.3}Stochastic differential equations}{44}
+\contentsline {paragraph}{Example - Langevin equation}{46}
+\contentsline {paragraph}{Example - Geometric random walk}{47}
+\contentsline {subsection}{\numberline {2.8.4}Fokker-Planck equation}{48}
+\contentsline {paragraph}{Example - Random walk}{49}
+\contentsline {paragraph}{Example - Langevin equation}{50}
+\contentsline {subsection}{\numberline {2.8.5}Overdamped Langevin equation}{52}
+\contentsline {paragraph}{Example}{52}
+\contentsline {subsection}{\numberline {2.8.6}Stochastic Velocity Rescaling}{53}
+\contentsline {chapter}{\numberline {3}Assignments}{55}
+\contentsline {section}{\numberline {3.1}Assignment 1}{55}
+\contentsline {paragraph}{Preliminary comments}{55}
+\contentsline {paragraph}{Energy conservation - drift and fluctuations}{56}
+\contentsline {paragraph}{Simulations at different temperatures - maximum allowed time-step}{57}
+\contentsline {paragraph}{Drift and fluctuations in relation to the size of the system}{58}
+\contentsline {paragraph}{Bonus level}{58}
+\contentsline {section}{\numberline {3.2}Assignment 2}{58}
+\contentsline {paragraph}{Behavior at different $\delta $, $q_0$ and $<\alpha >$}{58}
+\contentsline {paragraph}{Average value of $q^2$}{59}
+\contentsline {paragraph}{3D harmonic oscillator, average distance}{59}
+\contentsline {section}{\numberline {3.3}Assignment 3}{59}
+\contentsline {paragraph}{Behavior of Potential Energy at different values of friction}{59}
+\contentsline {paragraph}{Behavior of average potential energy and specific heat in function of T and N}{60}
+\contentsline {paragraph}{Behavior of average potential energy and specific heat from a configuration equilibrated at $T=3$}{60}
+\contentsline {paragraph}{Average of potential energy and specific heat with velocity rescaling}{60}
+\contentsline {section}{\numberline {3.4}Assignment 4}{61}
+\contentsline {paragraph}{Behavior of average and standard deviation with time}{61}
+\contentsline {paragraph}{Time increment of trajectories}{62}
+\contentsline {chapter}{\numberline {A}Volume of a hypersphere}{63}
